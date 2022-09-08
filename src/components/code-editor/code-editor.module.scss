@@ -1,0 +1,25 @@
+.editorWrapper {
+  position: relative;
+  height: 100%;
+  .utility {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    button{
+      background: gray;
+      margin: 2px;
+      &:hover{
+        background: rgb(77, 75, 75);
+      }
+    }
+  }
+  &:hover .utility {
+    opacity: 1;
+  
+  }
+}

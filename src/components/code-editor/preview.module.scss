@@ -1,0 +1,32 @@
+.previewWrapper {
+  position: relative;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.previewWrapper iframe {
+  height: 100%;
+  width: 100%;
+}
+.blockUI {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
+  display: none;
+}
+.previewError{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: red;
+}
+.react-draggable-transparent-selection .previewWrapper:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
