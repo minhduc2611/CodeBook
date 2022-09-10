@@ -12,7 +12,7 @@ const Resizable: React.FC<ResizableProps> = ({
   onResizeStart,
   onResizeStop,
   direction,
-  children,
+  children
 }) => {
   const [resizableProps, setResizableProps] = useState<ResizableBoxProps>(null);
   useEffect(() => {
@@ -27,7 +27,7 @@ const Resizable: React.FC<ResizableProps> = ({
         maxConstraints: [window.innerWidth * 0.75, Infinity],
         height: Infinity,
         width: window.innerWidth * 0.75,
-        resizeHandles: ['e'],
+        resizeHandles: ['e']
         // handle:(<div className="react-resizable-handle-e" style={{display: 'inline-block'}}>hellooo</div>)
       });
     } else {
@@ -39,13 +39,17 @@ const Resizable: React.FC<ResizableProps> = ({
         maxConstraints: [Infinity, window.innerHeight * 0.9],
         height: 700,
         width: Infinity,
-        resizeHandles: ['s'],
+        resizeHandles: ['s']
       });
     }
-  }, [direction]);
+  }, [direction, onResizeStart, onResizeStop]);
 
   if (!resizableProps || !resizableProps.width) return;
-  return <ResizableBox className={styles.resizableBox} {...resizableProps}>{children}</ResizableBox>;
+  return (
+    <ResizableBox className={styles.resizableBox} {...resizableProps}>
+      {children}
+    </ResizableBox>
+  );
 };
 
 export default Resizable;

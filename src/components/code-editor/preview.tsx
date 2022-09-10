@@ -4,7 +4,7 @@ import previewStyles from './preview.module.scss';
 interface PreviewProps {
   code: string;
   err: string;
-  shouldBlockUI: Object;
+  shouldBlockUI: boolean;
 }
 
 const html = `

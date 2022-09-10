@@ -11,7 +11,7 @@ const useBundler = ({
   initiateInput,
   inputSetter,
   autoBundleTime = 750,
-  autoBundle = true,
+  autoBundle = true
 }: BundlerOptions) => {
   const [input, setInput] = useState(initiateInput);
   const [aB, setAutoBundle] = useState(autoBundle);
@@ -25,7 +25,9 @@ const useBundler = ({
   const doBundleCode = async () => {
     const output = await bundle(input);
     setCode(output.code);
-    setErr(output.err && output.err.message ? output.err.message : output.err);
+    setErr(
+      output.err && output.err?.message ? output.err?.message : output.err
+    );
   };
   const toggleAutoBundle = () => setAutoBundle(!aB);
   useEffect(() => {
@@ -35,6 +37,7 @@ const useBundler = ({
         clearTimeout(timer);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   return {
@@ -44,7 +47,7 @@ const useBundler = ({
     errorString: err,
     doBundleCode,
     isAutoBundle: autoBundle,
-    toggleAutoBundle,
+    toggleAutoBundle
   };
 };
 export default useBundler;

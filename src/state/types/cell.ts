@@ -12,4 +12,3 @@ export interface CellsState {
     [key: string]: Cell;
   };
 }
-

@@ -1,16 +1,14 @@
 import { Fragment } from 'react';
-import { useCellContext } from '../../state/hooks/useCellContext';
+import { useCellContext } from 'src/state/hooks/useCellContext';
 import AddCell from './add-cell';
 import CellListItem from './cell-list-item';
 
 const CellList: React.FC = () => {
+  const { states } = useCellContext();
+  console.log('states', states);
 
-
-  const {states} = useCellContext();
-console.log('states', states);
-
-  const {order = [], data = {}} = states
-  const cells = order.map((id) => data[id])
+  const { order = [], data = {} } = states;
+  const cells = order.map((id) => data[id]);
 
   const renderedCells = cells.map((cell) => (
     <Fragment key={cell.id}>

@@ -1,6 +1,5 @@
 import { Divider } from '@mui/material';
 import { Cell } from '../../state/types/cell';
-
 import ActionBar from './action-bar';
 import style from './cell-list-item.module.scss';
 import CodeCell from './code-cell';
@@ -19,7 +18,6 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
         </div>
         <CodeCell cell={cell} />
         <Divider />
-
       </>
     );
   } else {
@@ -32,8 +30,7 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
     );
   }
 
-  return <div className={style.cellListItem}>{child}
-  </div>;
+  return <div className={style.cellListItem}>{child}</div>;
 };
 
 export default CellListItem;

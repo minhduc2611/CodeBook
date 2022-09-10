@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 import CodeCell from '../components/code-editor/code-cell';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

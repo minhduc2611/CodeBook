@@ -16,7 +16,7 @@ export const searchRepositories = (term: string) => {
           params: {
             text: term,
           },
-        }
+        },
       );
 
       const names = data.objects.map((result: any) => {
@@ -27,7 +27,7 @@ export const searchRepositories = (term: string) => {
         type: RepositoriesActionType.SEARCH_REPOSITORIES_SUCCESS,
         payload: names,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: RepositoriesActionType.SEARCH_REPOSITORIES_ERROR,
         payload: err.message,

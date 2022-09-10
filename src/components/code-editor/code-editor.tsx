@@ -1,4 +1,8 @@
-import MonacoEditor, { EditorProps, OnChange, OnMount } from '@monaco-editor/react';
+import MonacoEditor, {
+  EditorProps,
+  OnChange,
+  OnMount
+} from '@monaco-editor/react';
 import * as MonacoTypes from 'monaco-editor/esm/vs/editor/editor.api';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
@@ -74,14 +78,14 @@ const activateMonacoJSXHighlighter = async (monacoEditor, monaco) => {
     toggleJSXHighlighting,
     toggleJSXCommenting,
     isToggleJSXHighlightingOn,
-    isToggleJSXCommentingOn,
+    isToggleJSXCommentingOn
   };
 };
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
   onSave,
   onChange,
-  initialValue,
+  initialValue
 }) => {
   const [theme, setTheme] = useState('vs-dark');
   const [language, setLanguage] = useState('javascript');
@@ -129,7 +133,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         useTabs: true,
         semi: true,
         singleQuote: true,
-        tabWidth: 2,
+        tabWidth: 2
       })
       .replace(/\n$/, '');
 
@@ -139,7 +143,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
 
   const toggleTheme = useCallback(() => {
     setTheme((theme) => (theme === 'light' ? 'vs-dark' : 'light'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const OnRunCode = useCallback(onSave, []);
 
   const toggleLanguage = useCallback(() => {
@@ -176,8 +183,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
       lineNumbersMinChars: 3,
       fontSize: 16,
       scrollBeyondLastLine: false,
-      automaticLayout: true,
-    },
+      automaticLayout: true
+    }
   };
   const dashboardProps = {
     jsxEnabled: isEditorReady && language === 'javascript',
@@ -191,7 +198,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     language,
     toggleLanguage,
     onFormatClick,
-    OnRunCode,
+    OnRunCode
   };
   return (
     <div
@@ -215,7 +222,7 @@ const Dashboard = ({
   language,
   toggleLanguage,
   onFormatClick,
-  OnRunCode,
+  OnRunCode
 }) => {
   return (
     <div
@@ -223,7 +230,7 @@ const Dashboard = ({
         styles.utility,
         theme === 'light'
           ? 'lightThemeBackgroundColor'
-          : 'darkThemeBackgroundColor',
+          : 'darkThemeBackgroundColor'
       ].join(' ')}
     >
       <button disabled={!jsxEnabled} onClick={OnRunCode}>

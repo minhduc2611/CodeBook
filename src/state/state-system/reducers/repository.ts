@@ -1,16 +1,16 @@
 import { RepositoriesActionType } from '../action-types/repository';
 import { RepositoriesAction } from '../actions/repository';
 
-interface RepositoriesState {
+export interface RepositoriesState {
   loading: boolean;
   error: string | null;
   data: string[];
 }
 
-const initialState = {
+export const initialState = {
   loading: false,
   error: null,
-  data: [],
+  data: []
 };
 
 const reducer = (

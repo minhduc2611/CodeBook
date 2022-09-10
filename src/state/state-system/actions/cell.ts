@@ -23,7 +23,6 @@ export interface IInsertCellBeforeAction {
   };
 }
 
-
 export interface IInsertCellAfterAction {
   type: CellActionType.INSERT_CELL_AFTER;
   payload: {

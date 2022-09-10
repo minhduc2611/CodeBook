@@ -29,7 +29,7 @@ const CellProvider: React.FC<any> = ({ children }) => {
     <CellContext.Provider
       value={{
         states,
-        actions,
+        actions
       }}
     >
       {children}

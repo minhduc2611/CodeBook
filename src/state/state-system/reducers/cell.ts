@@ -20,14 +20,14 @@ ReactDOM.render(<App />, document.querySelector('#root'));
 export const initialState: CellsState = {
   loading: false,
   error: null,
-  order: ["12121121211212112121"],
+  order: ['12121121211212112121'],
   data: {
     '12121121211212112121': {
       id: '12121121211212112121',
       type: 'code',
-      content: sampleCode,
-    },
-  },
+      content: sampleCode
+    }
+  }
 };
 
 const reducer = produce(
@@ -35,7 +35,7 @@ const reducer = produce(
     switch (action.type) {
       case CellActionType.UPDATE_CELL:
         const { id, content } = action.payload;
-        state.data[id].content = content
+        state.data[id].content = content;
         return state;
       case CellActionType.DELETE_CELL:
         delete state.data[action.payload];
@@ -59,7 +59,7 @@ const reducer = produce(
         const cell: Cell = {
           content: '',
           type: action.payload.type,
-          id: uuidv4(),
+          id: uuidv4()
         };
 
         state.data[cell.id] = cell;
@@ -79,7 +79,7 @@ const reducer = produce(
         const newCell: Cell = {
           content: '',
           type: action.payload.type,
-          id: uuidv4(),
+          id: uuidv4()
         };
 
         state.data[newCell.id] = newCell;
