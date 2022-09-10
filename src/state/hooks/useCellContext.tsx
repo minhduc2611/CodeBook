@@ -19,7 +19,6 @@ const CellProvider: React.FC<any> = ({ children }) => {
     CellReducer.default,
     CellReducer.initialState
   );
-  console.log('states, dispatch', states, dispatch);
   const actions = useMemo(
     () => bindsActionCreatorsWithDispatch(cellActionCreators, dispatch),
     []

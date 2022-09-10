@@ -11,7 +11,6 @@ export const fetchPlugin = (inputCode: string) => {
     name: 'fetch-plugin',
     setup(build: esbuild.PluginBuild) {
       build.onLoad({ filter: /(^index\.js$)/ }, () => {
-        console.log('GET IN TO INDEX.JX');
         return {
           loader: 'jsx',
           contents: inputCode
@@ -29,7 +28,6 @@ export const fetchPlugin = (inputCode: string) => {
       });
 
       build.onLoad({ filter: /.css$/ }, async (args: any) => {
-        console.log('GET IN TO CSS');
 
         const { data, request } = await axios.get(args.path);
         const escaped = data
@@ -53,7 +51,6 @@ export const fetchPlugin = (inputCode: string) => {
       });
 
       build.onLoad({ filter: /.*/ }, async (args: any) => {
-        console.log('GET IN TO ALL FILE');
 
         const { data, request } = await axios.get(args.path);
 

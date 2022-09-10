@@ -5,7 +5,6 @@ import CellListItem from './cell-list-item';
 
 const CellList: React.FC = () => {
   const { states } = useCellContext();
-  console.log('states', states);
 
   const { order = [], data = {} } = states;
   const cells = order.map((id) => data[id]);

@@ -120,11 +120,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     // get current value from editor
     const unformatted = theMonacoEditorRef.current.getModel().getValue();
 
-    console.log(
-      'theMonacoEditorRef',
-      theMonacoEditorRef.current.getModel().getValue()
-    );
-
     // format that value
     const formatted = prettier
       .format(unformatted, {

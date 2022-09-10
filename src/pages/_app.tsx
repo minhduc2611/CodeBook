@@ -7,7 +7,6 @@ import { store } from '../state';
 import '../styles/globals.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  console.log('App dir', __dirname);
   return (
     <Provider store={store}>
       <CssBaseline />

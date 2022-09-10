@@ -23,7 +23,6 @@ const Home: FC<THomeProps> = ({ blogPosts = [] }) => {
 
 export const getServerSideProps: GetServerSideProps<THomeProps> = async () => {
   const blogPosts = await customFetch<BlogPost[]>('/api/blog-posts');
-  console.log('blogPosts', blogPosts);
 
   return { props: { blogPosts } };
 };

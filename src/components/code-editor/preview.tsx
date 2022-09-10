@@ -47,7 +47,6 @@ const Preview: React.FC<PreviewProps> = ({ code, shouldBlockUI, err }) => {
       iframe.current.contentWindow.postMessage(code, '*');
     }, 50);
   }, [code]);
-  console.log('err=====>', err);
 
   return (
     <div className={previewStyles.previewWrapper}>

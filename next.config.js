@@ -11,7 +11,6 @@ const nextConfig = removeImports({
   },
   webpack: function (config, { isServer }) {
     config.experiments = { asyncWebAssembly: true, syncWebAssembly: true };
-    console.log('nextConfig __dirname', __dirname);
     
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {

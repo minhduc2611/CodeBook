@@ -10,8 +10,6 @@ import {
 } from '../actions/cell';
 
 export const updateCell = (id: string, content: string): IUpdateCellAction => {
-  console.log('updateCell func', id, content);
-
   return {
     type: CellActionType.UPDATE_CELL,
     payload: {

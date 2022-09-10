@@ -1,8 +1,6 @@
 import CellList from '../../components/code-editor/cell-list';
-import CellProvider, { useCellContext } from '../../state/hooks/useCellContext';
+import CellProvider from '../../state/hooks/useCellContext';
 const BlogEditor = () => {
-  const a = useCellContext();
-  console.log('a', a);
   return (
     <div>
       <CellProvider>
