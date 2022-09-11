@@ -36,3 +36,6 @@ lerna-debug.log*
 
 .next
 .vscode
+libs
+.env
+/src/server/schema.graphql

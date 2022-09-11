@@ -13,7 +13,6 @@ export interface CodeCellProps {
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ className, cell }) => {
-
   const {
     actions: { updateCell }
   } = useCellContext();

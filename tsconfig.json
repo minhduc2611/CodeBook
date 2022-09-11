@@ -22,7 +22,6 @@
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -33,6 +32,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/server/blog-editor": [
+        "libs/server/blog-editor/src"
+      ],
+      "@app/server/blog-editor/*": [
+        "libs/server/blog-editor/src/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
