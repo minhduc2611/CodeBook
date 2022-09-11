@@ -18,18 +18,12 @@ import { UserModule } from './user/user.module';
       autoSchemaFile: join(process.cwd(), 'src/server/schema.graphql')
     }),
     RenderModule,
-    // RenderModule.forRootAsync(
-    //   Next({ dev: NODE_ENV === 'development' }),
-
-    //   { viewsDir: null }
-    // ),
     TypeOrmModule.forRoot({
       type: 'mongodb',
       url: 'mongodb+srv://leminhduc:leminhduc@cluster0.9asgo.mongodb.net/?retryWrites=true&w=majority',
       database: 'nest-next-app',
       ssl: true,  
       autoLoadEntities: true,
-      // https://typeorm.io/#/migrations
       synchronize: true,
     }),
     ServeStaticModule.forRoot({
