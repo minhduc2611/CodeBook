@@ -14,7 +14,7 @@ const Home: FC<THomeProps> = ({ blogPosts = [] }) => {
       <h1>Home</h1>
       {blogPosts.map(({ title, id }) => (
         <div key={id}>
-          <Link href={`/${id}`}>{title}</Link>
+          <Link href={`/posts/${id}`}>{title}</Link>
         </div>
       ))}
     </div>

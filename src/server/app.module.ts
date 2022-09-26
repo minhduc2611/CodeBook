@@ -8,6 +8,7 @@ import { join } from 'path';
 // import { NODE_ENV } from 'src/shared/constants/env';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ArticleModule } from './article/article.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -29,7 +30,8 @@ import { UserModule } from './user/user.module';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', 'public')
     }),
-    UserModule
+    UserModule,
+    ArticleModule
   ],
   controllers: [AppController],
   providers: [AppService]

@@ -3,8 +3,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Render,
-  UseInterceptors
+  Render, UseInterceptors
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ParamsInterceptor } from './params.interceptor';
@@ -13,25 +12,19 @@ import { ParamsInterceptor } from './params.interceptor';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  // @Get('/posts')
-  // @Render('posts')
-  // @UseInterceptors(ParamsInterceptor)
-  // posts() {
-  //   return {};
-  // }
-  @Get('/blog-editor')
-  @Render('blog-editor')
+  @Get('/posts')
+  @Render('posts')
   @UseInterceptors(ParamsInterceptor)
-  blogEditor() {
+  posts() {
     return {};
   }
+  @Get('/codebooks')
+  @Render('codebooks')
+  @UseInterceptors(ParamsInterceptor)
+  codebooks() {
+    return {}
+  }
 
-  // @Get(':id')
-  // @Render('[id]')
-  // @UseInterceptors(ParamsInterceptor)
-  // public blogPost() {
-  //   return {};
-  // }
   @Get('/api/blog-posts')
   public listBlogPosts() {
     return this.appService.getBlogPosts();

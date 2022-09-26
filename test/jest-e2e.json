@@ -11,7 +11,7 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "@app/server/blog-editor/(.*)": "<rootDir>/../libs/server/blog-editor/src/$1",
-    "@app/server/blog-editor": "<rootDir>/../libs/server/blog-editor/src"
+    "@app/server/codebook/(.*)": "<rootDir>/../libs/server/codebook/src/$1",
+    "@app/server/codebook": "<rootDir>/../libs/server/codebook/src"
   }
 }

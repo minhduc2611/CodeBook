@@ -33,11 +33,11 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/server/blog-editor": [
-        "libs/server/blog-editor/src"
+      "@app/server/codebook": [
+        "libs/server/codebook/src"
       ],
-      "@app/server/blog-editor/*": [
-        "libs/server/blog-editor/src/*"
+      "@app/server/codebook/*": [
+        "libs/server/codebook/src/*"
       ]
     }
   },

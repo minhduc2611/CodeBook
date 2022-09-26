@@ -11,7 +11,7 @@ async function bootstrap() {
   const server = await NestFactory.create(AppModule);
   const renderer = server.get(RenderModule);
   /* viewsDir null means that nest-next should look for pages in root dir */
-  renderer.register(server, client, { viewsDir: null });
+  renderer.register(server, client, { viewsDir: null, passthrough404: true });
   await server.listen(PORT);
 }
 bootstrap();
