@@ -15,7 +15,7 @@ const EditorMarkdown = dynamic<React.ComponentProps<typeof MDEditor.Markdown>>(
     import('@uiw/react-md-editor').then((mod) => {
       return mod.default.Markdown;
     }),
-  { ssr: false }
+  { ssr: false, }
 );
 interface TextEditorProps {
   className?: string;
@@ -51,16 +51,17 @@ const TextEditor: React.FC<TextEditorProps> = ({
     };
   }, []);
 
-  if (editing) {
+  // if (editing) {
     return (
       <div className={styles.textEditor} ref={ref}>
         <MDEditorComponent
           value={cell.content}
+          height={500}
           onChange={(v) => updateCell(cell.id, v || '')}
         />
       </div>
     );
-  }
+  // }
 
   return (
     <div
