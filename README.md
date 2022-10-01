@@ -6,6 +6,8 @@
 <!-- ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository. -->
+## Description
+Codebook helps you write articles, write code and see results right on the browser. Leveraging SSR, all content will be SEO optimized.
 
 ## Installation
 
