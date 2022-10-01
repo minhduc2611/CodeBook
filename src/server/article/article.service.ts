@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import slugify from 'slugify';
 import { STATUS } from 'src/shared/constants/result';
 import { IBaseService } from 'src/shared/interface/IBaseService.interface';
+import { createSlug } from 'src/shared/utils/slug';
 import { MongoRepository, UpdateWriteOpResult } from 'typeorm';
 import { MongoFindOneOptions } from 'typeorm/find-options/mongodb/MongoFindOneOptions';
 import { v4 as uuidv4 } from 'uuid';
@@ -38,7 +38,7 @@ export class ArticleService implements IBaseService {
   async updateOneById(id: string, input: ArticleAddInput): Promise<STATUS> {
     let a: UpdateWriteOpResult = await this.articleRepository.updateOne(
       { _id: id },
-      { $set: { ...input, articleSlug: this.createSlug(input.articleTitle) } }
+      { $set: { ...input, articleSlug: createSlug(input.articleTitle) } }
     );
     return a.result.ok ? STATUS.SUCCESS : STATUS.FAIL;
   }
@@ -49,22 +49,12 @@ export class ArticleService implements IBaseService {
     article.article = input.article;
     article.cellOrder = input.cellOrder;
     article.articleTitle = input.articleTitle;
-    article.articleSlug = this.createSlug(input.articleTitle);
+    article.articleSlug = createSlug(input.articleTitle);
     console.log('========>', article.articleSlug);
 
     return this.articleRepository.save(article);
   }
 
-  createSlug(param: string) {
-    return slugify(param, {
-      replacement: '-',
-      remove: /[^\w\s\d]+/g,
-      lower: false,
-      strict: false,
-      locale: 'vi',
-      trim: true
-    });
-  }
 }
 
 // gửi mai ctc : Vytt4 cc anh TuanNDH

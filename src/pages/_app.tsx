@@ -7,6 +7,7 @@ import { AppApolloClient } from 'src/client/graphql/client';
 import NavbarLayout from './../client/components/navbar-layout/NavbarLayout';
 import { store } from './../client/state';
 import './../client/styles/globals.scss';
+import Utilities from './_utilities';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -16,6 +17,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <NavbarLayout>
           <Component {...pageProps} />
         </NavbarLayout>
+        <Utilities />
       </Provider>
     </ApolloProvider>
   );

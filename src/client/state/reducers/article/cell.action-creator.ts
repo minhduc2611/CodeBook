@@ -1,6 +1,6 @@
 import { Article } from 'src/server/article/entities/article.entity';
 import { CellTypes } from '../../types/cell';
-import { CellActionType } from '../action-types/cell';
+import { CellActionType } from './cell.action-types';
 import {
   Direction,
   IDeleteCellAction,
@@ -9,8 +9,9 @@ import {
   IMoveCellAction,
   ISetCellsAction,
   IUpdateArticleAction,
+  IUpdateArticleTitleAction,
   IUpdateCellAction
-} from '../actions/cell';
+} from './cell.actions';
 
 export const updateCell = (id: string, content: string): IUpdateCellAction => {
   return {
@@ -83,6 +84,17 @@ export const updateCells = (
     type: CellActionType.UPDATE_CELLS,
     payload: {
       article: article
+    }
+  };
+};
+
+export const updateArticleTitle = (
+  text: string
+): IUpdateArticleTitleAction => {
+  return {
+    type: CellActionType.UPDATE_ARTICLE_TITLE,
+    payload: {
+      text
     }
   };
 };

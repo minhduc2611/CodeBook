@@ -5,5 +5,6 @@ export enum CellActionType {
   INSERT_CELL_AFTER = 'insert_cell_after',
   UPDATE_CELL = 'update_cell',
   SET_CELLS = 'set_cell',
-  UPDATE_CELLS = 'update_cells'
+  UPDATE_CELLS = 'update_cells',
+  UPDATE_ARTICLE_TITLE = 'update_article_title'
 }

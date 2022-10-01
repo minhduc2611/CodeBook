@@ -1,6 +1,21 @@
 import ArticleAddInput from 'src/server/article/inputs/article-add.input';
 import { AppApolloClient } from '../client';
-import { DeleteOneArticleMutation, UpdateOneArticleMutation } from '../queries/articles';
+import {
+  AddOneArticleMutation,
+  DeleteOneArticleMutation,
+  FetchAllArticleQuery,
+  ResponseArticles,
+  UpdateOneArticleMutation
+} from '../queries/articles';
+
+export const fetchAllArticle = async () => {
+  let { data } = await AppApolloClient.query<ResponseArticles>({
+    query: FetchAllArticleQuery
+  });
+
+  // notification manager
+  return data.articles;
+};
 
 export const deleteArticle = async (id: string) => {
   let { data } = await AppApolloClient.mutate({
@@ -13,12 +28,20 @@ export const deleteArticle = async (id: string) => {
 };
 
 export const updateArticle = async (id: string, article: ArticleAddInput) => {
-    let { data } = await AppApolloClient.mutate({
-      mutation: UpdateOneArticleMutation,
-      variables: { id: id, article: article }
-    });
-  
-    // notification manager
-    console.log('data', data);
-  };
-  
+  let { data } = await AppApolloClient.mutate({
+    mutation: UpdateOneArticleMutation,
+    variables: { id: id, article: article }
+  });
+
+  // notification manager
+  console.log('data', data);
+};
+
+export const addArticle = async (article: ArticleAddInput) => {
+  let { data } = await AppApolloClient.mutate({
+    mutation: AddOneArticleMutation,
+    variables: { article: article }
+  });
+  // notification manager
+  console.log('data', data);
+};

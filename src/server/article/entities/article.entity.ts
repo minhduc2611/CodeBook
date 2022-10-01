@@ -5,6 +5,14 @@ import { CellObject } from './cell.entity';
 @Entity()
 @ObjectType()
 export class Article {
+  constructor () {
+    this._id = ''
+    this.article = []
+    this.articleSlug = ''
+    this.articleTitle = ''
+    this.cellOrder = []
+  }
+
   @Field()
   @ObjectIdColumn()
   _id: string;

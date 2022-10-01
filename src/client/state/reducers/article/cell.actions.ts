@@ -1,6 +1,6 @@
 import { Article } from 'src/server/article/entities/article.entity';
 import { CellTypes } from '../../types/cell';
-import { CellActionType } from '../action-types/cell';
+import { CellActionType } from './cell.action-types';
 
 export type Direction = 'up' | 'down';
 export interface IMoveCellAction {
@@ -54,6 +54,13 @@ export interface IUpdateArticleAction {
   };
 }
 
+export interface IUpdateArticleTitleAction {
+  type: CellActionType.UPDATE_ARTICLE_TITLE;
+  payload: {
+    text: string;
+  };
+}
+
 export type ICellAction =
   | IMoveCellAction
   | IDeleteCellAction
@@ -61,4 +68,5 @@ export type ICellAction =
   | IInsertCellAfterAction
   | IUpdateCellAction
   | ISetCellsAction
-  | IUpdateArticleAction;
+  | IUpdateArticleAction
+  | IUpdateArticleTitleAction;

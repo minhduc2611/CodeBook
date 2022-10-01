@@ -1,4 +1,5 @@
-export * as cellActionCreators from './state-system/action-creators/cell';
-export * as repositoryActionCreators from './state-system/action-creators/repository';
-export * as reducers from './state-system/reducers';
+export * as reducers from './reducers';
+export * as cellActionCreators from './reducers/article/cell.action-creator';
+export * as repositoryActionCreators from './reducers/repository/repository.action-creator';
 export { store } from './stores/redux/store';
+

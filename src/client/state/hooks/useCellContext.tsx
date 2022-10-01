@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useReducer } from 'react';
 import { cellActionCreators } from '..';
-import { CellReducer } from '../state-system/reducers';
-import { CellContext } from '../stores/context/cellContext';
+import { CellReducer } from '../reducers';
+import { CellContext } from '../stores/context/cell.context';
 import { ArticleState } from '../types/cell';
 import { bindsActionCreatorsWithDispatch } from '../utils/reducerUtils';
 

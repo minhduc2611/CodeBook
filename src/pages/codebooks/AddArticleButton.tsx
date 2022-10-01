@@ -1,13 +1,14 @@
 import { Button } from '@mui/material';
 import deepEqual from 'deep-equal';
-import { FC } from 'react';
-import { updateArticle } from 'src/client/graphql/queries-creator/articles';
-import { transformStateToEntity } from 'src/client/state/state-system/article/transform';
+import React, { FC } from 'react';
 import { ArticleState } from 'src/client/state/types/cell';
-import ArticleAddInput from 'src/server/article/inputs/article-add.input';
 
-import { useCellContext } from '../../client/state/hooks/useCellContext';
-import { useUnsavedChanges } from './useUnsavedChanges';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 
 interface DeleteArticleProps {}
 
@@ -32,32 +33,71 @@ const unsavedChanges = (article: ArticleState) => {
 };
 
 const AddArticleButton: FC<DeleteArticleProps> = () => {
-  const { states: article, actions : {updateCells} } = useCellContext();
+  // const { states: article, actions : {updateCells} } = useCellContext();
 
-  useUnsavedChanges(() => unsavedChanges(article));
+  // useUnsavedChanges(() => unsavedChanges(article));
 
-  const handleSaveArticle = async () => {
-    console.log('article.originalArticle', article.originalArticle);
-    console.log('article', article);
-    try {
-      const saveArticle: ArticleAddInput = transformStateToEntity<ArticleState, ArticleAddInput>(article);
-      await updateArticle(article.id, saveArticle)
-      updateCells({...article.originalArticle, ...saveArticle})
-    } catch (error) {
-      
-    }
-    
-  }
+  // const handleSaveArticle = async () => {
+  //   console.log('article.originalArticle', article.originalArticle);
+  //   console.log('article', article);
+  //   try {
+  //     const saveArticle: ArticleAddInput = transformStateToEntity<ArticleState, ArticleAddInput>(article);
+  //     await updateArticle(article.id, saveArticle)
+  //     updateCells({...article.originalArticle, ...saveArticle})
+  //   } catch (error) {
+
+  //   }
+
+  // }
+  const [open, setOpen] = React.useState(false);
+  const [articleTitle, setArticleTitle] = React.useState('');
+
+  const handleClickOpen = () => {
+
+    // setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div>
-      <Button
-        // href="/codebooks"
-        disabled={!unsavedChanges(article)} // disabled when nothing changed
-        // onClick={handleSaveArticle}
-      >
-        Add Article
-      </Button>
-    </div>
+    <>
+      <div>
+        <Button
+          href="/codebooks/new"
+          // disabled={!unsavedChanges(article)} // disabled when nothing changed
+          // onClick={handleSaveArticle}
+          // onClick={handleClickOpen}
+        >
+          Add Article
+        </Button>
+      </div>
+      <Dialog open={open} onClose={handleClose} maxWidth={'sm'} fullWidth>
+        <DialogTitle>Article Title</DialogTitle>
+        <DialogContent>
+          <DialogContentText>What is your article title ?</DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="article-title"
+            label="Article Title"
+            type="text"
+            fullWidth
+            
+            value={articleTitle}
+            onChange={(e) => setArticleTitle(e.target.value)}
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={() => {
+            // TODOs: add validations.
+          }}>Create</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 

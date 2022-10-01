@@ -3,9 +3,9 @@ import produce from 'immer';
 import { Article } from 'src/server/article/entities/article.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { ArticleState } from '../../types/cell';
-import { CellActionType } from '../action-types/cell';
-import { ICellAction } from '../actions/cell';
-import { transform } from '../article/transform';
+import { CellActionType } from './cell.action-types';
+import { ICellAction } from './cell.actions';
+import { transform } from './transform';
 
 export const initialState: ArticleState = {
   id: '',
@@ -19,18 +19,21 @@ export const initialState: ArticleState = {
 const reducer = produce(
   (state: ArticleState = initialState, action: ICellAction) => {
     switch (action.type) {
+      case CellActionType.UPDATE_ARTICLE_TITLE:
+        const { text } = action.payload;
+        return { ...state, title: text };
       case CellActionType.SET_CELLS:
         const { article } = action.payload;
         let articleState: ArticleState = transform<Article, ArticleState>(
           article
         );
-        return { state, ...articleState };
+        return { ...state, ...articleState };
       case CellActionType.UPDATE_CELLS:
         const { article: article2 } = action.payload;
         let articleState2: ArticleState = transform<Article, ArticleState>(
           article2
         );
-        return { state, ...articleState2 };
+        return { ...state, ...articleState2 };
       case CellActionType.UPDATE_CELL:
         const { id, content } = action.payload;
         state.article[id].content = content;
@@ -75,6 +78,8 @@ const reducer = produce(
           type: action.payload.type,
           id: uuidv4()
         };
+        console.log('state 1', state);
+        console.log('state 1 article', state.article);
 
         state.article[newCell.id] = newCell;
 

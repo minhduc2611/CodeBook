@@ -125,7 +125,7 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          <Link href='/codebooks'>Home</Link>
+          <Link href="/codebooks">Home</Link>
         </Typography>
       </Toolbar>
     </AppBar>
@@ -144,7 +144,7 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Code book', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               sx={{

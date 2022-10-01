@@ -1,41 +1,30 @@
 // import CellList from '../../components/code-editor/cell-list';
 
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import Link from 'next/link';
-import { Article } from 'src/server/article/entities/article.entity';
+import { useEffect } from 'react';
+import { useArticleListActions } from 'src/client/state/hooks/useArticleListActions';
+import { useTypedSelector } from 'src/client/state/hooks/useTypedSelector';
 import AddArticleButton from './AddArticleButton';
-// import CellProvider from '../../state/hooks/useCellContext';
-const FetchAllArticleQuery = gql`
-  query {
-    articles {
-      _id
-      cellOrder
-      articleTitle
-      articleSlug
-      article {
-        content
-        id
-        type
-      }
-    }
-  }
-`;
-type ResponseArticles = {
-  articles : Article[]
-}
+
 const CodeBook = () => {
-  const { called, loading, data } = useQuery<ResponseArticles>(FetchAllArticleQuery, {});
-  // const [loadGreeting, { called, loading, data }] = useLazyQuery(FetchUserQuery, {})
+  const { fetchArticleList } = useArticleListActions();
+  const { data, loading, error } = useTypedSelector(
+    (state) => state.articleList
+  );
   console.log('data', data);
+  useEffect(() => {
+    console.log('fetchArticleList');
+    fetchArticleList();
+  }, []);
   if (loading) return 'loading';
   return (
     <div>
-      {data.articles.map((a, idx) => (
-        <p key={idx}>
-          <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
-        </p>
-      ))}
+      {data &&
+        data.map((a, idx) => (
+          <p key={idx}>
+            <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
+          </p>
+        ))}
       <AddArticleButton />
     </div>
   );

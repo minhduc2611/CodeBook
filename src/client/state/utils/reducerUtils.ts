@@ -12,16 +12,19 @@ export function bindsActionCreatorsWithDispatch<T, M extends Dispatch<any>>(
   return result;
 }
 
-
 export function arrayToObject<T>(
   theArray: T[],
   by: string
-): {[key: string]: T} {
+): { [key: string]: T } {
   let final = {};
+
+  if (Object.entries(theArray).length === 0) {
+    return final;
+  }
 
   if (theArray) {
     theArray.forEach((_object: T) => {
-      final[_object[by]] = {..._object} as T;
+      final[_object[by]] = { ..._object } as T;
     });
     return final;
   }
