@@ -18,6 +18,8 @@ export const initialState: ArticleState = {
 
 const reducer = produce(
   (state: ArticleState = initialState, action: ICellAction) => {
+    console.log('RENDERING', Math.random());
+    
     switch (action.type) {
       case CellActionType.UPDATE_ARTICLE_TITLE:
         const { text } = action.payload;

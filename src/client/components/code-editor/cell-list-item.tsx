@@ -1,4 +1,5 @@
 import { Divider } from '@mui/material';
+import { useCellContext } from 'src/client/state/hooks/useCellContext';
 import { Cell } from './../../../client/state/types/cell';
 import ActionBar from './action-bar';
 import style from './cell-list-item.module.scss';
@@ -10,6 +11,10 @@ interface CellListItemProps {
 
 const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
   let child: JSX.Element;
+  const {
+    actions: { updateCell }
+  } = useCellContext();
+
   if (cell.type === 'code') {
     child = (
       <>
@@ -23,7 +28,10 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
   } else {
     child = (
       <>
-        <TextEditor cell={cell} />
+        <TextEditor
+          onChange={(value) => updateCell(cell.id, value || '')}
+          value={cell.content}
+        />
         <Divider />
         <ActionBar id={cell.id} />
       </>

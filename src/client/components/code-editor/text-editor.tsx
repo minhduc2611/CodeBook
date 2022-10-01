@@ -2,9 +2,7 @@ import '@uiw/react-markdown-preview/markdown.css';
 import MDEditor from '@uiw/react-md-editor';
 import '@uiw/react-md-editor/markdown-editor.css';
 import dynamic from 'next/dynamic';
-import { memo, useEffect, useRef, useState } from 'react';
-import { useCellContext } from './../../../client/state/hooks/useCellContext';
-import { Cell } from './../../../client/state/types/cell';
+import { memo, useRef, useState } from 'react';
 import styles from './text-editor.module.scss';
 const MDEditorComponent = dynamic<React.ComponentProps<typeof MDEditor>>(
   () => import('@uiw/react-md-editor').then((mod) => mod.default),
@@ -15,52 +13,57 @@ const EditorMarkdown = dynamic<React.ComponentProps<typeof MDEditor.Markdown>>(
     import('@uiw/react-md-editor').then((mod) => {
       return mod.default.Markdown;
     }),
-  { ssr: false, }
+  { ssr: false }
 );
-interface TextEditorProps {
+export interface TextEditorProps {
   className?: string;
-  cell: Cell;
+  value: string;
+  onChange: (content: string) => void;
 }
 const TextEditor: React.FC<TextEditorProps> = ({
   className,
-  cell
+  value,
+  onChange
 }: TextEditorProps) => {
   // const [value, setValue] = useState<string>();
 
   const ref = useRef<HTMLDivElement | null>(null);
   const [editing, setEditing] = useState(false);
-  const {
-    actions: { updateCell }
-  } = useCellContext();
-  useEffect(() => {
-    const listener = (event: MouseEvent) => {
-      if (
-        ref.current &&
-        event.target &&
-        ref.current.contains(event.target as Node)
-      ) {
-        return;
-      }
+  const [content, setContent] = useState(value);
 
-      setEditing(false);
-    };
-    document.addEventListener('click', listener, { capture: true });
+  // useEffect(() => {
+  //   const listener = (event: MouseEvent) => {
+  //     if (
+  //       ref.current &&
+  //       event.target &&
+  //       ref.current.contains(event.target as Node)
+  //     ) {
+  //       return;
+  //     }
 
-    return () => {
-      document.removeEventListener('click', listener, { capture: true });
-    };
-  }, []);
+  //     setEditing(false);
+  //   };
+  //   document.addEventListener('click', listener, { capture: true });
 
+  //   return () => {
+  //     document.removeEventListener('click', listener, { capture: true });
+  //   };
+  // }, []);
+
+  console.log('rerender', Math.random());
   // if (editing) {
-    return (
-      <div className={styles.textEditor} ref={ref}>
-        <MDEditorComponent
-          value={cell.content}
-          height={500}
-          onChange={(v) => updateCell(cell.id, v || '')}
-        />
-      </div>
-    );
+  return (
+    <div className={styles.textEditor} ref={ref}>
+      <MDEditorComponent
+        value={content}
+        height={500}
+        onChange={(v) => {
+          setContent(v);
+          debounce(() => onChange(v), 1000, false)();
+        }}
+      />
+    </div>
+  );
   // }
 
   return (
@@ -74,10 +77,34 @@ const TextEditor: React.FC<TextEditorProps> = ({
       onClick={() => setEditing(true)}
     >
       <div className="card-content">
-        <EditorMarkdown source={cell.content || 'Click to edit'} />
+        <EditorMarkdown source={value || 'Click to edit'} />
       </div>
     </div>
   );
 };
 
 export default memo(TextEditor);
+
+const debounce = (func, wait, immediate) => {
+  console.log('hiiiiiiiii');
+
+  let timeout;
+
+  return function executedFunction(this: any) {
+    let context: any = this;
+    let args = arguments;
+
+    let later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    let callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+
+    if (callNow) func.apply(context, args);
+  };
+};
