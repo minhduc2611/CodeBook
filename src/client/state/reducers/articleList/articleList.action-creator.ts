@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { fetchAllArticle } from 'src/client/graphql/queries-creator/articles';
+import { fetchAllArticle } from './../../../../client/graphql/queries-creator/articles';
 import { ArticleListActionType } from './articleList.action-types';
 import { ArticleListAction } from './articleList.actions';
 

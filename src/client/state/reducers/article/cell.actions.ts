@@ -1,5 +1,5 @@
-import { Article } from 'src/server/article/entities/article.entity';
 import { CellTypes } from '../../types/cell';
+import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 
 export type Direction = 'up' | 'down';

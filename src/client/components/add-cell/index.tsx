@@ -1,7 +1,7 @@
 import CodeIcon from '@mui/icons-material/Code';
 import NotesIcon from '@mui/icons-material/Notes';
 import { Button } from '@mui/material';
-import { useCellContext } from './../../../client/state/hooks/useCellContext';
+import { useCellContext } from '../../state/hooks/useCellContext';
 import styles from './add-cell.module.scss';
 interface AddCellProps {
   previousCellId: string | null;
@@ -12,6 +12,18 @@ const AddCell: React.FC<AddCellProps> = ({ forceVisible, previousCellId }) => {
     actions: { insertCellAfter }
   } = useCellContext();
 
+  return (
+    <AddCellPresentation
+      {...{ forceVisible, previousCellId, insertCellAfter }}
+    />
+  );
+};
+
+export const AddCellPresentation = ({
+  forceVisible,
+  previousCellId,
+  insertCellAfter
+}) => {
   const stylesInline = {
     codeIcon: 'mr-2',
     noteIcon: 'mr-2'

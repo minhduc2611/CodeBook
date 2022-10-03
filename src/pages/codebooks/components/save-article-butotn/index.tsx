@@ -4,13 +4,13 @@ import { FC } from 'react';
 import {
   addArticle,
   updateArticle
-} from 'src/client/graphql/queries-creator/articles';
-import { transformStateToEntity } from 'src/client/state/reducers/article/transform';
-import { ArticleState } from 'src/client/state/types/cell';
-import ArticleAddInput from 'src/server/article/inputs/article-add.input';
+} from '../../../../client/graphql/queries-creator/articles';
+import { transformStateToEntity } from '../../../../client/state/reducers/article/transform';
+import { ArticleState } from '../../../../client/state/types/cell';
+import ArticleAddInput from '../../../../server/article/inputs/article-add.input';
 
-import { useCellContext } from '../../client/state/hooks/useCellContext';
-import { useUnsavedChanges } from './useUnsavedChanges';
+import { useCellContext } from '../../../../client/state/hooks/useCellContext';
+import { useUnsavedChanges } from '../../useUnsavedChanges';
 
 interface DeleteArticleProps {}
 

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import { useCellContext } from './../../state/hooks/useCellContext';
-import AddCell from './add-cell';
-import CellListItem from './cell-list-item';
+import { AddCell } from 'src/client/components';
+import { useCellContext } from 'src/client/state/hooks/useCellContext';
+import CellListItem from '../cell-list-item/cell-list-item';
 
 const CellList: React.FC = ({}) => {
   const { states } = useCellContext();

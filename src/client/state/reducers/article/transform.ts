@@ -1,7 +1,7 @@
-import { Article } from 'src/server/article/entities/article.entity';
-import ArticleAddInput from 'src/server/article/inputs/article-add.input';
 import { ArticleState, Cell } from '../../types/cell';
 import { arrayToObject } from '../../utils/reducerUtils';
+import { Article } from './../../../../server/article/entities/article.entity';
+import ArticleAddInput from './../../../../server/article/inputs/article-add.input';
 
 export function transform<A extends Article, AS extends ArticleState>(
   article: A

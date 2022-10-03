@@ -8,7 +8,7 @@ import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import { useCallback, useRef, useState } from 'react';
 import styles from './code-editor.module.scss';
-interface CodeEditorProps {
+export interface CodeEditorProps {
   initialValue: string;
   onChange(value: string): void;
   onSave(): void;
@@ -97,11 +97,14 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   const theMonacoEditorRef = useRef<MonacoTypes.editor.IStandaloneCodeEditor>();
 
   const handleEditorDidMount: OnMount = useCallback((monacoEditor, monaco) => {
+    console.log('setIsEditorReady1 ', !!monacoEditor)
+
     activateMonacoJSXHighlighter(monacoEditor, monaco)
       .then((monacoJSXHighlighterRefCurrent) => {
         monacoJSXHighlighterRef.current = monacoJSXHighlighterRefCurrent;
         theMonacoEditorRef.current = monacoEditor;
         setIsEditorReady(!!monacoEditor);
+        console.log('setIsEditorReady2 ', !!monacoEditor)
         setIsJSXHighlightingOn(
           monacoJSXHighlighterRefCurrent.isToggleJSXHighlightingOn()
         );
@@ -109,7 +112,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
           monacoJSXHighlighterRefCurrent.isToggleJSXCommentingOn()
         );
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log('CodeEditor', e));
   }, []);
   const handleOnChange: OnChange = (value) => {
     onChange(value);
@@ -197,7 +200,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   };
   return (
     <div
-      style={{ background: 'blue', width: '100%' }}
+      style={{ background: 'black', width: '100%' }}
       className={[styles.editorWrapper, 'custom-monaco-editor'].join(' ')}
     >
       <Dashboard {...dashboardProps} />

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import SnackBarNotification from 'src/client/components/snack-bar/SnackBarNotification';
+import SnackBarNotification from './../client/components/snack-bar/SnackBarNotification';
 
 const Utilities: FC = () => {
   return (

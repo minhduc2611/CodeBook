@@ -1,29 +1,32 @@
 import { memo, useCallback, useState } from 'react';
-import { Cell } from './../../../client/state/types/cell';
-import { useCellContext } from './../../state/hooks/useCellContext';
+import useBundler from '../../hooks';
+import CodeEditor from '../code-editor';
+import Preview from '../preview';
+import Resizable from '../resizable';
 import styles from './code-cell.module.scss';
-import CodeEditor from './code-editor';
-import useBundler from './hooks/useBundler';
-import Preview from './preview';
-import Resizable from './resizable';
 
 export interface CodeCellProps {
   className?: string;
-  cell: Cell;
+  onChange: (value: string) => void;
+  initialValue: string;
 }
 
-const CodeCell: React.FC<CodeCellProps> = ({ className, cell }) => {
-  const {
-    actions: { updateCell }
-  } = useCellContext();
+const CodeCell: React.FC<CodeCellProps> = ({
+  className,
+  onChange,
+  initialValue
+}) => {
+  // const {
+  //   actions: { updateCell }
+  // } = useCellContext();
 
   const cellContentSetter = useCallback((value: string) => {
-    updateCell(cell.id, value);
+    onChange(value);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { setInput, doBundleCode, code, errorString } = useBundler({
-    initiateInput: cell.content,
+    initiateInput: initialValue,
     inputSetter: cellContentSetter
   });
   const [resizeInProgress, setResizeInProgress] = useState(false);
@@ -58,7 +61,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ className, cell }) => {
             >
               <CodeEditor
                 onSave={doBundleCode}
-                initialValue={cell.content}
+                initialValue={initialValue}
                 onChange={setInput}
               />
             </div>

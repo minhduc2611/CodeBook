@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
-import TextEditor from './text-editor';
+import TextEditor from '.';
 
 export default {
   title: 'Example/TextEditor',

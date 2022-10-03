@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { ResizableBox, ResizableBoxProps } from 'react-resizable';
 import styles from './resizable.module.scss';
-interface ResizableProps {
+// import 'resizable.scss'
+export interface ResizableProps {
   direction: 'horizontal' | 'vertical';
   children: JSX.Element;
   onResizeStart?;
@@ -27,8 +28,7 @@ const Resizable: React.FC<ResizableProps> = ({
         maxConstraints: [window.innerWidth * 0.75, Infinity],
         height: Infinity,
         width: window.innerWidth * 0.75,
-        resizeHandles: ['e']
-        // handle:(<div className="react-resizable-handle-e" style={{display: 'inline-block'}}>hellooo</div>)
+        handle:(<div className={[styles.reactResizableHandleE, styles.reactResizableHandle].join(' ')}></div>)
       });
     } else {
       // vertical
@@ -39,7 +39,7 @@ const Resizable: React.FC<ResizableProps> = ({
         maxConstraints: [Infinity, window.innerHeight * 0.9],
         height: 700,
         width: Infinity,
-        resizeHandles: ['s']
+        handle:(<div className={[styles.reactResizableHandleS, styles.reactResizableHandle].join(' ')}></div>)
       });
     }
   }, [direction, onResizeStart, onResizeStop]);

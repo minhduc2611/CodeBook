@@ -1,4 +1,4 @@
-import { Article } from "src/server/article/entities/article.entity";
+import { Article } from "./../../../../server/article/entities/article.entity";
 import { ArticleListActionType } from "./articleList.action-types";
 
 interface SearchRepositoriesAction {

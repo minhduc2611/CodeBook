@@ -1,8 +1,8 @@
 import { Cell } from 'dist/server/article/entities/cell.entity';
 import produce from 'immer';
-import { Article } from 'src/server/article/entities/article.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { ArticleState } from '../../types/cell';
+import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 import { ICellAction } from './cell.actions';
 import { transform } from './transform';

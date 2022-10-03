@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import deepEqual from 'deep-equal';
 import React, { FC } from 'react';
-import { ArticleState } from 'src/client/state/types/cell';
+import { ArticleState } from '../../../../client/state/types/cell';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

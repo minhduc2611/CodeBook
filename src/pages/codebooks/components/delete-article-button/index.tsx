@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import { FC } from 'react';
-import { deleteArticle } from 'src/client/graphql/queries-creator/articles';
+import { deleteArticle } from '../../../../client/graphql/queries-creator/articles';
 
-import { useCellContext } from '../../client/state/hooks/useCellContext';
+import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 
 interface DeleteArticleProps {}
 const DeleteArticleButton: FC<DeleteArticleProps> = () => {

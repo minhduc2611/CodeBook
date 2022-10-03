@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { Article } from 'src/server/article/entities/article.entity';
+import { Article } from './../../../server/article/entities/article.entity';
 export const FetchAllArticleQuery = gql`
   query {
     articles {

@@ -1,5 +1,5 @@
-import { Article } from "src/server/article/entities/article.entity";
-import { CellObject } from "src/server/article/entities/cell.entity";
+import { Article } from "./../../../server/article/entities/article.entity";
+import { CellObject } from "./../../../server/article/entities/cell.entity";
 
 export type CellTypes = 'code' | 'text';
 export interface Cell extends CellObject{}

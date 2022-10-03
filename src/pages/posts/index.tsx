@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { FC } from 'react';
-import { BlogPost } from 'src/shared/blog-post';
-import { customFetch } from 'src/shared/utils/fetch';
+import { BlogPost } from './../../shared/blog-post';
+import { customFetch } from './../../shared/utils/fetch';
 
 type THomeProps = {
   blogPosts?: BlogPost[];

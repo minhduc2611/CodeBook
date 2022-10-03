@@ -1,13 +1,13 @@
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { FC } from 'react';
-import { BlogPost } from 'src/shared/blog-post';
+import { BlogPost } from './../../shared/blog-post';
 
 type TBlogProps = {
   post?: BlogPost;
 };
 
-const Blog: FC<TBlogProps> = ({ post = {} }) => {
+const Blog: FC<TBlogProps> = ({ post }) => {
   return (
     <div>
       <Link href={'/'}>Home</Link>

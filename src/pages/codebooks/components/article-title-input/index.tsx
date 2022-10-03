@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
 import TextField from '@mui/material/TextField';
-import { useCellContext } from 'src/client/state/hooks/useCellContext';
+import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 
-const ArticleTitle: FC = () => {
+const ArticleTitleInput: FC = () => {
   const {
     states: article,
     actions: { updateArticleTitle }
@@ -24,4 +24,4 @@ const ArticleTitle: FC = () => {
   );
 };
 
-export default ArticleTitle;
+export default ArticleTitleInput;

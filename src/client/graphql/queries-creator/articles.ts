@@ -1,4 +1,3 @@
-import ArticleAddInput from 'src/server/article/inputs/article-add.input';
 import { AppApolloClient } from '../client';
 import {
   AddOneArticleMutation,
@@ -7,6 +6,7 @@ import {
   ResponseArticles,
   UpdateOneArticleMutation
 } from '../queries/articles';
+import ArticleAddInput from './../../../server/article/inputs/article-add.input';
 
 export const fetchAllArticle = async () => {
   let { data } = await AppApolloClient.query<ResponseArticles>({

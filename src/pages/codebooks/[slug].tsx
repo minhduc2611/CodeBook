@@ -1,18 +1,17 @@
 import { GetServerSideProps } from 'next';
 import Error from 'next/error';
 import { FC } from 'react';
-
-import { AppApolloClient } from 'src/client/graphql/client';
+import CellProvider from '../../client/state/hooks/useCellContext';
+import { AppApolloClient } from './../..//client/graphql/client';
 import {
   FetchOneArticleQuery,
   FetchOneArticleResult
-} from 'src/client/graphql/queries/articles';
-import { Article } from 'src/server/article/entities/article.entity';
-import CellList from '../../client/components/code-editor/cell-list';
-import CellProvider from '../../client/state/hooks/useCellContext';
-import ArticleTitle from './ArticleTitle';
-import DeleteArticleButton from './DeleteArticleButton';
-import SaveArticleButton from './SaveArticleButton';
+} from './../../client/graphql/queries/articles';
+import { Article } from './../../server/article/entities/article.entity';
+import ArticleTitleInput from './components/article-title-input';
+import CellList from './components/cell-list/cell-list';
+import DeleteArticleButton from './components/delete-article-button';
+import SaveArticleButton from './components/save-article-butotn';
 type CodeBookDetailProps = {
   article: Article;
   errorCode: number;
@@ -25,7 +24,7 @@ const CodeBookDetail: FC<CodeBookDetailProps> = ({ article, errorCode }) => {
   return (
     <div>
       <CellProvider article={article}>
-        <ArticleTitle />
+        <ArticleTitleInput />
         <CellList />
         <DeleteArticleButton />
         <SaveArticleButton />

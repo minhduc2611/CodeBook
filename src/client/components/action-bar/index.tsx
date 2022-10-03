@@ -1,16 +1,14 @@
 import { Button } from '@mui/material';
-import { useCellContext } from './../../state/hooks/useCellContext';
+import { Direction } from '../../state/reducers/article/cell.actions';
 import styles from './action-bar.module.scss';
 
-interface ActionBarProps {
+export interface ActionBarProps {
   id: string;
+  moveCell: (id: string, direction: Direction) => any;
+  deleteCell: (id: string) => any;
 }
 
-const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
-  const {
-    actions: { moveCell, deleteCell },
-  } = useCellContext();
-
+const ActionBar: React.FC<ActionBarProps> = ({ id, moveCell, deleteCell }) => {
   return (
     <div className={styles.actionBar}>
       <Button onClick={() => moveCell(id, 'up')} variant="outlined">
@@ -25,5 +23,4 @@ const ActionBar: React.FC<ActionBarProps> = ({ id }) => {
     </div>
   );
 };
-
 export default ActionBar;
