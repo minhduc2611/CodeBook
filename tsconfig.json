@@ -45,7 +45,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/pages/codebooks/components/cell-list-item/components/action-bar-code-cell/.stories.tsx"  ],
   "exclude": [
     "node_modules"
   ]

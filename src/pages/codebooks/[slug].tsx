@@ -11,7 +11,7 @@ import { Article } from './../../server/article/entities/article.entity';
 import ArticleTitleInput from './components/article-title-input';
 import CellList from './components/cell-list/cell-list';
 import DeleteArticleButton from './components/delete-article-button';
-import SaveArticleButton from './components/save-article-butotn';
+import SaveArticleButton from './components/save-article-button';
 type CodeBookDetailProps = {
   article: Article;
   errorCode: number;

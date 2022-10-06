@@ -7,28 +7,77 @@ export default {
   component: Resizable,
   argTypes: {
     direction: String,
-    onResizeStart: (text: String) => {},
-    onResizeStop: (text: String) => {}
+    onResizeStart: (text: any) => {},
+    onResizeStop: (text: any) => {}
   }
 } as ComponentMeta<typeof Resizable>;
 
 const Template: ComponentStory<typeof Resizable> = (args) => {
   return (
+    <>
+      <Resizable
+        {...args}
+        onResizeStop={(a) => {
+          console.log('asdasddas', a);
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            height: '100%',
+            width: '100%',
+            display: 'inline-block',
+            background: 'yellow'
+          }}
+        >
+          ?
+        </div>
+      </Resizable>
+      <Resizable
+        {...args}
+        onResizeStop={(a) => {
+          console.log('asdasddas', a);
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            height: '100%',
+            width: '100%',
+            display: 'inline-block',
+            background: 'yellow'
+          }}
+        >
+          ?
+        </div>
+      </Resizable>
+    </>
+  );
+};
+
+export const Vertical = Template.bind({});
+Vertical.args = {
+  direction: 'vertical'
+};
+
+const TemplateHorizontal: ComponentStory<typeof Resizable> = (args) => {
+  return (
     <Resizable {...args}>
       <div
         style={{
           position: 'relative',
-          height: '100%',
+          height: '100px',
           width: 'calc(100% - 10px)',
           display: 'inline-block',
           background: 'yellow'
         }}
-      >?</div>
+      >
+        ?
+      </div>
     </Resizable>
   );
 };
-
-export const Primary = Template.bind({});
-Primary.args = {
-  direction: 'verticle'
+export const Horizontal = TemplateHorizontal.bind({});
+Horizontal.args = {
+  direction: 'horizontal'
 };

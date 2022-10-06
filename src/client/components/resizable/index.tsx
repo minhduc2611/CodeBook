@@ -5,8 +5,9 @@ import styles from './resizable.module.scss';
 export interface ResizableProps {
   direction: 'horizontal' | 'vertical';
   children: JSX.Element;
-  onResizeStart?;
-  onResizeStop?;
+  onResizeStart?: (e: any) => void;
+  onResizeStop?: (e: any) => void;
+  height?: number;
 }
 
 const Resizable: React.FC<ResizableProps> = ({
@@ -19,36 +20,64 @@ const Resizable: React.FC<ResizableProps> = ({
   useEffect(() => {
     if (direction === 'horizontal') {
       // horizontal
-
+      console.log('horizontal', styles);
+      // reactResizableHandle: "XlYBXIhzTfTF457i2Y_P"
+      // reactResizableHandleE: "CKBvCn_prgc6OLThuFWQ"
+      // reactResizableHandleS: "Gak2X5_KbVBB7hvf5swN"
+      // resizableBox: "xiPQ3UIfQeamHCcMWc3a"
+      // resizeHorizontal: "SqeMbZH0p_sjzLJOtHGw"
       setResizableProps({
         onResizeStart: onResizeStart,
         onResizeStop: onResizeStop,
-        className: 'resize-horizontal',
+        className: [styles.resizableBox, styles.resizeHorizontal].join(' '),
         minConstraints: [window.innerWidth * 0.2, Infinity],
         maxConstraints: [window.innerWidth * 0.75, Infinity],
         height: Infinity,
         width: window.innerWidth * 0.75,
-        handle:(<div className={[styles.reactResizableHandleE, styles.reactResizableHandle].join(' ')}></div>)
+        handle: (
+          <div
+            className={[
+              styles.reactResizableHandleE,
+              styles.reactResizableHandle
+            ].join(' ')}
+          ></div>
+        )
       });
     } else {
       // vertical
       setResizableProps({
         onResizeStart: onResizeStart,
-        onResizeStop: onResizeStop,
+        onResizeStop: (a: any) => {
+          console.log('heyyyy', onResizeStop);
+          onResizeStop(a);
+        },
+        className: [styles.resizableBox].join(' '),
         minConstraints: [Infinity, 24],
         maxConstraints: [Infinity, window.innerHeight * 0.9],
         height: 700,
         width: Infinity,
-        handle:(<div className={[styles.reactResizableHandleS, styles.reactResizableHandle].join(' ')}></div>)
+        handle: (
+          <div
+            className={[
+              styles.reactResizableHandleS,
+              styles.reactResizableHandle
+            ].join(' ')}
+          ></div>
+        )
       });
     }
   }, [direction, onResizeStart, onResizeStop]);
 
   if (!resizableProps || !resizableProps.width) return;
   return (
-    <ResizableBox className={styles.resizableBox} {...resizableProps}>
-      {children}
-    </ResizableBox>
+    <div
+      // style={{
+      //   marginBottom: 12,
+      //   paddingBottom: 30
+      // }}
+    >
+      <ResizableBox {...resizableProps}>{children}</ResizableBox>
+    </div>
   );
 };
 

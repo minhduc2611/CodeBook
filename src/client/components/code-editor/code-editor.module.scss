@@ -3,23 +3,25 @@
   height: 100%;
   .utility {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: -42px;
+    left: 5px;
     z-index: 20;
     opacity: 0;
     transition: opacity 0.3s;
     display: flex;
-    flex-direction: column;
-    button{
-      background: gray;
+    flex-direction: row;
+    button {
+      color: white;
       margin: 2px;
-      &:hover{
+      &:hover {
         background: rgb(77, 75, 75);
+      }
+      &:disabled {
+        color: rgb(77, 75, 75);
       }
     }
   }
   &:hover .utility {
     opacity: 1;
-  
   }
 }

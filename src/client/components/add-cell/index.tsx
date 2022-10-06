@@ -1,53 +1,70 @@
 import CodeIcon from '@mui/icons-material/Code';
 import NotesIcon from '@mui/icons-material/Notes';
-import { Button } from '@mui/material';
-import { useCellContext } from '../../state/hooks/useCellContext';
+import { IconButton } from '@mui/material';
+import { IInsertCellAfterAction } from './../../../client/state/reducers/article/cell.actions';
+import { CellTypes } from './../../../client/state/types/cell';
 import styles from './add-cell.module.scss';
-interface AddCellProps {
+export interface AddCellProps {
   previousCellId: string | null;
   forceVisible?: boolean;
+  insertCellAfter: (
+    id: string | null,
+    cellType: CellTypes
+  ) => IInsertCellAfterAction;
 }
-const AddCell: React.FC<AddCellProps> = ({ forceVisible, previousCellId }) => {
-  const {
-    actions: { insertCellAfter }
-  } = useCellContext();
-
-  return (
-    <AddCellPresentation
-      {...{ forceVisible, previousCellId, insertCellAfter }}
-    />
-  );
-};
-
-export const AddCellPresentation = ({
+const AddCell: React.FC<AddCellProps> = ({
   forceVisible,
   previousCellId,
   insertCellAfter
 }) => {
   const stylesInline = {
     codeIcon: 'mr-2',
-    noteIcon: 'mr-2'
+    noteIcon: 'mr-2',
+    div1: [styles.hovererWrapper, styles.zIndex200].join(' '),
+    div2: [styles.hovererWrapper].join(' '),
+    threeDotsWrapper: [
+      styles.threeDotsHoverer,
+      forceVisible ? styles.invisible : ''
+    ].join(' ')
   };
 
   return (
-    <div
-      className={[styles.addCell, forceVisible ? styles.forceVisible : ''].join(
-        ' '
-      )}
-    >
-      <div className={[styles.addButtons].join(' ')}>
-        <Button
-          onClick={() => insertCellAfter(previousCellId, 'code')}
-          variant="outlined"
+    <div className={[styles.mainWrapper].join(' ')}>
+      <div className={stylesInline.div1}>
+        <div
+          className={[
+            styles.addCell,
+            forceVisible ? styles.forceVisible : ''
+          ].join(' ')}
         >
-          <CodeIcon className={stylesInline.codeIcon} /> Code
-        </Button>
-        <Button
-          onClick={() => insertCellAfter(previousCellId, 'text')}
-          variant="outlined"
-        >
-          <NotesIcon className={stylesInline.noteIcon} /> Text
-        </Button>
+          <div className={[styles.addButtons].join(' ')}>
+            <IconButton onClick={() => insertCellAfter(previousCellId, 'code')}>
+              <CodeIcon className={stylesInline.codeIcon} />
+            </IconButton>
+            <IconButton onClick={() => insertCellAfter(previousCellId, 'text')}>
+              <NotesIcon className={stylesInline.noteIcon} />
+            </IconButton>
+            <IconButton onClick={() => insertCellAfter(previousCellId, 'text')}>
+              <NotesIcon className={stylesInline.noteIcon} />
+            </IconButton>
+          </div>
+        </div>
+      </div>
+      <div className={[stylesInline.div2].join(' ')}>
+        <div className={stylesInline.threeDotsWrapper}>
+          <img
+            style={{
+              borderRadius: '14px',
+              border: '1px solid gray',
+              padding: '1px 21px',
+              margin: '10px',
+              height: 30
+            }}
+            color="gray"
+            src={'/assets/svg/three-dots.svg'}
+            alt="three-dots"
+          />
+        </div>
       </div>
     </div>
   );

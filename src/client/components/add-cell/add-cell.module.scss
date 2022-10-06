@@ -1,33 +1,61 @@
-.addCell {
+.mainWrapper {
   position: relative;
-  opacity: 0;
-  transition: opacity 0.3s ease-in 0.1s;
   margin: 8px 0;
-
-  &:hover {
+  display: block;
+  height: 65px;
+  padding: 15px 0px;
+  &:hover .addCell {
     opacity: 1;
   }
-  &.forceVisible {
-    opacity: 1;
-  }
-
-  & .divider {
+  .hovererWrapper {
+    width: 100%;
     position: absolute;
-    top: 50%;
-    bottom: 50%;
-    right: 2.5%;
-    left: 2.5%;
-    border-bottom: 1px solid gray;
-    width: 95%;
-    z-index: -1;
   }
-  & .addButtons {
+  .zIndex200 {
+    z-index: 200;
+  }
+  .threeDotsHoverer {
     display: flex;
     justify-content: center;
-    z-index: 10;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in 0.1s;
   }
-  & .addButtons button {
-    margin: 0 20px;
-    background: aliceblue;
+  &:hover .threeDotsHoverer {
+    opacity: 0;
+  }
+  .invisible {
+    opacity: 0;
+  }
+  .addCell {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s ease-in 0.1s;
+    margin: 8px 0;
+
+    &.forceVisible {
+      opacity: 1;
+    }
+
+    & .divider {
+      position: absolute;
+      top: 50%;
+      bottom: 50%;
+      right: 2.5%;
+      left: 2.5%;
+      border-bottom: 1px solid gray;
+      width: 95%;
+      z-index: -1;
+    }
+    & .addButtons {
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+    & .addButtons button {
+      margin: 0 10px;
+      &:hover {
+        background: aliceblue;
+      }
+    }
   }
 }

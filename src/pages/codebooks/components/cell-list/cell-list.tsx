@@ -4,7 +4,10 @@ import { useCellContext } from 'src/client/state/hooks/useCellContext';
 import CellListItem from '../cell-list-item/cell-list-item';
 
 const CellList: React.FC = ({}) => {
-  const { states } = useCellContext();
+  const {
+    states,
+    actions: { insertCellAfter }
+  } = useCellContext();
 
   const { cellOrder = [], article = {} } = states;
   const cells = cellOrder.map((id) => article[id]);
@@ -12,13 +15,17 @@ const CellList: React.FC = ({}) => {
   const renderedCells = cells.map((cell) => (
     <Fragment key={cell.id}>
       <CellListItem cell={cell} />
-      <AddCell previousCellId={cell.id} />
+      <AddCell insertCellAfter={insertCellAfter} previousCellId={cell.id} />
     </Fragment>
   ));
 
   return (
     <div>
-      <AddCell forceVisible={cells.length === 0} previousCellId={null} />
+      <AddCell
+        insertCellAfter={insertCellAfter}
+        forceVisible={cells.length === 0}
+        previousCellId={null}
+      />
       {renderedCells}
     </div>
   );

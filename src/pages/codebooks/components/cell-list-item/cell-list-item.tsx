@@ -1,45 +1,26 @@
-import { Divider } from '@mui/material';
-import ActionBar from '../../../../client/components/action-bar';
-
-import CodeCell from '../../../../client/components/code-cell';
-import TextEditor from '../../../../client/components/text-editor';
 import { useCellContext } from './../../../../client/state/hooks/useCellContext';
 import { Cell } from './../../../../client/state/types/cell';
 import style from './cell-list-item.module.scss';
-interface CellListItemProps {
+import ActionBarCodeCell from './components/action-bar-code-cell';
+import ActionBarTextCell from './components/action-bar-text-cell';
+export interface CellListItemProps {
   cell: Cell;
 }
 
-const CellListItem: React.FC<CellListItemProps> = ({ cell : {id, content, type} }) => {
+const CellListItem: React.FC<CellListItemProps> = ({
+  cell: { id, content, type }
+}) => {
   let child: JSX.Element;
   const {
     actions: { updateCell, moveCell, deleteCell }
   } = useCellContext();
 
+  const props = { id, moveCell, deleteCell, content, updateCell };
+
   if (type === 'code') {
-    child = (
-      <>
-        <div className={style.actionBarWrapper}>
-          <ActionBar {...{ id, moveCell, deleteCell }} />
-        </div>
-        <CodeCell
-          onChange={(value) => updateCell(id, value || '')}
-          initialValue={content}
-        />
-        <Divider />
-      </>
-    );
+    child = <ActionBarCodeCell {...props} />;
   } else {
-    child = (
-      <>
-        <TextEditor
-          onChange={(value) => updateCell(id, value || '')}
-          value={content}
-        />
-        <Divider />
-        <ActionBar {...{ id, moveCell, deleteCell }}/>
-      </>
-    );
+    child = <ActionBarTextCell {...props} />;
   }
 
   return <div className={style.cellListItem}>{child}</div>;

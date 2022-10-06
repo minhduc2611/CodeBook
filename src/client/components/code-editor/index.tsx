@@ -8,6 +8,7 @@ import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import { useCallback, useRef, useState } from 'react';
 import styles from './code-editor.module.scss';
+import Dashboard from './components/dashboard';
 export interface CodeEditorProps {
   initialValue: string;
   onChange(value: string): void;
@@ -208,64 +209,5 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     </div>
   );
 };
-const Dashboard = ({
-  jsxEnabled,
-  monacoEnabled,
-  isJSXHighlightingOn,
-  toggleJSXHighlighting,
-  isJSXCommentingOn,
-  toggleJSXCommenting,
-  theme,
-  toggleTheme,
-  language,
-  toggleLanguage,
-  onFormatClick,
-  OnRunCode
-}) => {
-  return (
-    <div
-      className={[
-        styles.utility,
-        theme === 'light'
-          ? 'lightThemeBackgroundColor'
-          : 'darkThemeBackgroundColor'
-      ].join(' ')}
-    >
-      <button disabled={!jsxEnabled} onClick={OnRunCode}>
-        Run Code
-      </button>
-      <button disabled={!jsxEnabled} onClick={onFormatClick}>
-        Format
-      </button>
-      <button
-        className={isJSXHighlightingOn ? 'toggleOn' : 'toggleOff'}
-        onClick={toggleJSXHighlighting}
-        disabled={!jsxEnabled}
-      >
-        Toggle JSX highlighting
-      </button>
-      <button
-        className={isJSXCommentingOn ? 'toggleOn' : 'toggleOff'}
-        onClick={toggleJSXCommenting}
-        disabled={!jsxEnabled}
-      >
-        Toggle JSX Commenting
-      </button>
-      <button
-        className={theme ? 'toggleOn' : 'toggleOff'}
-        onClick={toggleTheme}
-        disabled={!monacoEnabled}
-      >
-        Toggle theme
-      </button>
-      <button
-        className={language ? 'toggleOn' : 'toggleOff'}
-        onClick={toggleLanguage}
-        disabled={!monacoEnabled}
-      >
-        Toggle language
-      </button>
-    </div>
-  );
-};
+
 export default CodeEditor;

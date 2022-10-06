@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import { ArrowDownward, ArrowUpward, Delete } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 import { Direction } from '../../state/reducers/article/cell.actions';
 import styles from './action-bar.module.scss';
 
@@ -10,16 +11,31 @@ export interface ActionBarProps {
 
 const ActionBar: React.FC<ActionBarProps> = ({ id, moveCell, deleteCell }) => {
   return (
-    <div className={styles.actionBar}>
-      <Button onClick={() => moveCell(id, 'up')} variant="outlined">
-        Up
-      </Button>
-      <Button onClick={() => moveCell(id, 'down')} variant="outlined">
-        Down
-      </Button>
-      <Button onClick={() => deleteCell(id)} variant="outlined">
-        Delete
-      </Button>
+    <div className={[styles.actionBarWrapper, 'ActionBar'].join(' ')}>
+      <IconButton
+        className={styles.actionBarButton}
+        color="inherit"
+        onClick={() => deleteCell(id)}
+        title="Delete cell"
+      >
+        <Delete />
+      </IconButton>
+      <IconButton
+        className={styles.actionBarButton}
+        color="inherit"
+        onClick={() => moveCell(id, 'down')}
+        title="Move cell down"
+      >
+        <ArrowDownward />
+      </IconButton>
+      <IconButton
+        className={styles.actionBarButton}
+        color="inherit"
+        onClick={() => moveCell(id, 'up')}
+        title="Move cell up"
+      >
+        <ArrowUpward />
+      </IconButton>
     </div>
   );
 };
