@@ -1,3 +1,4 @@
+import { InsertPhoto } from '@mui/icons-material';
 import CodeIcon from '@mui/icons-material/Code';
 import NotesIcon from '@mui/icons-material/Notes';
 import { IconButton } from '@mui/material';
@@ -45,7 +46,7 @@ const AddCell: React.FC<AddCellProps> = ({
               <NotesIcon className={stylesInline.noteIcon} />
             </IconButton>
             <IconButton onClick={() => insertCellAfter(previousCellId, 'text')}>
-              <NotesIcon className={stylesInline.noteIcon} />
+              <InsertPhoto className={stylesInline.noteIcon} />
             </IconButton>
           </div>
         </div>
