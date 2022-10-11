@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from 'react';
-import useBundler from '../../hooks';
+import { useBundler } from 'src/client/hooks';
 import CodeEditor from '../code-editor';
 import Preview from '../preview';
 import Resizable from '../resizable';

@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
+import AddArticleButton from './../../client/page-components/codebooks/add-article-button';
 import { useArticleListActions } from './../../client/state/hooks/useArticleListActions';
 import { useTypedSelector } from './../../client/state/hooks/useTypedSelector';
-import AddArticleButton from './components/add-article-button';
 
 const CodeBook = () => {
   const { fetchArticleList } = useArticleListActions();

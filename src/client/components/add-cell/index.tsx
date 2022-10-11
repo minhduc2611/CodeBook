@@ -1,7 +1,6 @@
 import CodeIcon from '@mui/icons-material/Code';
 import NotesIcon from '@mui/icons-material/Notes';
 import { IconButton } from '@mui/material';
-import Image from 'next/image';
 import { IInsertCellAfterAction } from './../../../client/state/reducers/article/cell.actions';
 import { CellTypes } from './../../../client/state/types/cell';
 import styles from './add-cell.module.scss';
@@ -53,7 +52,8 @@ const AddCell: React.FC<AddCellProps> = ({
       </div>
       <div className={[stylesInline.div2].join(' ')}>
         <div className={stylesInline.threeDotsWrapper}>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             style={{
               borderRadius: '14px',
               border: '1px solid gray',

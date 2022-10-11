@@ -2,16 +2,16 @@ import { GetServerSideProps } from 'next';
 import Error from 'next/error';
 import { FC } from 'react';
 import CellProvider from '../../client/state/hooks/useCellContext';
-import { AppApolloClient } from './../..//client/graphql/client';
+import { AppApolloClient } from './../../client/graphql/client';
 import {
   FetchOneArticleQuery,
   FetchOneArticleResult
 } from './../../client/graphql/queries/articles';
+import ArticleTitleInput from './../../client/page-components/codebooks/article-title-input';
+import CellList from './../../client/page-components/codebooks/cell-list/cell-list';
+import DeleteArticleButton from './../../client/page-components/codebooks/delete-article-button';
+import SaveArticleButton from './../../client/page-components/codebooks/save-article-button';
 import { Article } from './../../server/article/entities/article.entity';
-import ArticleTitleInput from './components/article-title-input';
-import CellList from './components/cell-list/cell-list';
-import DeleteArticleButton from './components/delete-article-button';
-import SaveArticleButton from './components/save-article-button';
 type CodeBookDetailProps = {
   article: Article;
   errorCode: number;

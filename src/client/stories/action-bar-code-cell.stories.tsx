@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import ActionBarCodeCell from '../../pages/codebooks/components/cell-list-item/components/action-bar-code-cell';
+import ActionBarCodeCell from '../page-components/codebooks/cell-list-item/components/action-bar-code-cell';
 // import { useState } from 'react';
 
 export default {

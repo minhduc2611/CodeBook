@@ -9,8 +9,8 @@ import { transformStateToEntity } from '../../../../client/state/reducers/articl
 import { ArticleState } from '../../../../client/state/types/cell';
 import ArticleAddInput from '../../../../server/article/inputs/article-add.input';
 
+import { useUnsavedChanges } from '../../../../client/hooks';
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
-import useUnsavedChanges from '../../useUnsavedChanges';
 
 const unsavedChanges = (article: ArticleState) => {
   console.table([article, article.originalArticle]);
