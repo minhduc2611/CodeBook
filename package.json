@@ -5,6 +5,7 @@
   "author": "ducleminh",
   "private": true,
   "license": "UNLICENSED",
+  "cacheDirectories": [".next/cache"],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npm run build:next && npm run build:nest",
