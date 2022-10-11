@@ -32,7 +32,10 @@ export class ArticleService implements IBaseService {
 
   async getOne({ ...params }): Promise<Article> {
     let query: MongoFindOneOptions<Article> = { where: { ...params } };
-    return await this.articleRepository.findOne(query);
+    let result = await this.articleRepository.findOne(query);
+    console.log('type', typeof result);
+    console.log('result', result);
+    return result;
   }
 
   async updateOneById(id: string, input: ArticleAddInput): Promise<STATUS> {
@@ -54,7 +57,6 @@ export class ArticleService implements IBaseService {
 
     return this.articleRepository.save(article);
   }
-
 }
 
 // gửi mai ctc : Vytt4 cc anh TuanNDH

@@ -7,12 +7,12 @@ import ArticleAddInput from './inputs/article-add.input';
 export class ArticleResolver {
   constructor(private readonly articleService: ArticleService) {}
 
-  @Query(() => [Article])
+  @Query(() => [Article], {nullable: 'itemsAndList'})
   async articles() {
     return await this.articleService.getAll();
   }
 
-  @Query(() => Article!)
+  @Query(() => Article)
   async article(
     @Args({
       name: '_id',
@@ -33,6 +33,7 @@ export class ArticleResolver {
     } else if (articleSlug) {
       article = await this.articleService.getOne({ articleSlug });
     } 
+    console.log('article', article)
     return article;
   }
 

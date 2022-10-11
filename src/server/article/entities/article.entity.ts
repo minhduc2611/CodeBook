@@ -17,20 +17,20 @@ export class Article {
   @ObjectIdColumn()
   _id: string;
 
-  @Field(() => String)
+  @Field(() => String!)
   @Column()
   articleTitle: string;
 
 
-  @Field(() => String)
-  @Column({unique: true})
+  @Field(() => String!)
+  @Column({unique: true, nullable : true})
   articleSlug: string;
 
-  @Field(() => [String])
+  @Field(() => [String!], { nullable: true })
   @Column()
   cellOrder: string[];
 
-  @Field(() => [CellObject])
+  @Field(() => [CellObject], { nullable: 'items' })
   @Column()
   article: CellObject[];
 }
