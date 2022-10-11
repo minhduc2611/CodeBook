@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ActionBarTextCell from '.';
+import ActionBarTextCell from '../../pages/codebooks/components/cell-list-item/components/action-bar-text-cell';
 
 export default {
   title: 'Example/ActionBarTextCell',
