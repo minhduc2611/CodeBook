@@ -4,8 +4,7 @@ import { deleteArticle } from '../../../../client/graphql/queries-creator/articl
 
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 
-interface DeleteArticleProps {}
-const DeleteArticleButton: FC<DeleteArticleProps> = () => {
+const DeleteArticleButton: FC = () => {
   const {
     states: { id }
   } = useCellContext();

@@ -6,16 +6,16 @@ import ArticleAddInput from './../../../../server/article/inputs/article-add.inp
 export function transform<A extends Article, AS extends ArticleState>(
   article: A
 ) {
-  let state = {} as AS;
+  const state = {} as AS;
   console.log('article 1', article);
   console.log('article 1.1', article.article);
   console.log('article 2', Object.entries(article.article).length);
 
-//   if (Object.entries(article.article).length === 0) {
-//     console.log('article 3', article);
-//     state.originalArticle = article;
-//     return state;
-//   }
+  //   if (Object.entries(article.article).length === 0) {
+  //     console.log('article 3', article);
+  //     state.originalArticle = article;
+  //     return state;
+  //   }
 
   state.cellOrder = article.cellOrder;
   state.id = article._id;
@@ -32,7 +32,7 @@ export function transformStateToEntity<
   AS extends ArticleState,
   A extends ArticleAddInput
 >(articleState: AS) {
-  let article = {} as A;
+  const article = {} as A;
   article.article = Object.values(articleState.article).map(
     ({ id, type, content }) => ({ id, type, content })
   );

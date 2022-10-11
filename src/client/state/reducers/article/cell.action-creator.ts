@@ -66,9 +66,7 @@ export const insertCellAfter = (
   };
 };
 
-export const setCells = (
-  article: Article
-): ISetCellsAction => {
+export const setCells = (article: Article): ISetCellsAction => {
   return {
     type: CellActionType.SET_CELLS,
     payload: {
@@ -77,9 +75,7 @@ export const setCells = (
   };
 };
 
-export const updateCells = (
-  article: Article
-): IUpdateArticleAction => {
+export const updateCells = (article: Article): IUpdateArticleAction => {
   return {
     type: CellActionType.UPDATE_CELLS,
     payload: {
@@ -88,9 +84,7 @@ export const updateCells = (
   };
 };
 
-export const updateArticleTitle = (
-  text: string
-): IUpdateArticleTitleAction => {
+export const updateArticleTitle = (text: string): IUpdateArticleTitleAction => {
   return {
     type: CellActionType.UPDATE_ARTICLE_TITLE,
     payload: {

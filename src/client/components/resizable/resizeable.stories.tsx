@@ -7,8 +7,8 @@ export default {
   component: Resizable,
   argTypes: {
     direction: String,
-    onResizeStart: (text: any) => {},
-    onResizeStop: (text: any) => {}
+    onResizeStart: () => {},
+    onResizeStop: () => {}
   }
 } as ComponentMeta<typeof Resizable>;
 

@@ -71,10 +71,10 @@ const Resizable: React.FC<ResizableProps> = ({
   if (!resizableProps || !resizableProps.width) return;
   return (
     <div
-      // style={{
-      //   marginBottom: 12,
-      //   paddingBottom: 30
-      // }}
+    // style={{
+    //   marginBottom: 12,
+    //   paddingBottom: 30
+    // }}
     >
       <ResizableBox {...resizableProps}>{children}</ResizableBox>
     </div>

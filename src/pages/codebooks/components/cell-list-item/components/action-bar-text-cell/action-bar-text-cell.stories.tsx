@@ -10,7 +10,7 @@ export default {
     moveCell: () => {},
     deleteCell: () => {},
     content: String,
-    updateCell: (id: string, value: string) => {}
+    updateCell: () => {}
   }
 } as ComponentMeta<typeof ActionBarTextCell>;
 
@@ -27,5 +27,5 @@ Primary.args = {
   content: `
   ### 1 Hello text editor
     `,
-  updateCell: (id: string, value: string) => {}
+  updateCell: () => {}
 };

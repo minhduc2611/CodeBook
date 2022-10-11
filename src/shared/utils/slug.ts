@@ -1,5 +1,4 @@
-import slugify from "slugify";
-
+import slugify from 'slugify';
 
 export const createSlug = (param: string) => {
   return slugify(param, {
@@ -10,4 +9,4 @@ export const createSlug = (param: string) => {
     locale: 'vi',
     trim: true
   });
-}
+};

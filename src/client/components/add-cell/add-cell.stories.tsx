@@ -7,7 +7,7 @@ export default {
   argTypes: {
     previousCellId: String,
     forceVisible: Boolean,
-    insertCellAfter: (previousCellId: string, type: string) => {}
+    insertCellAfter: () => {}
   }
 } as ComponentMeta<typeof AddCell>;
 

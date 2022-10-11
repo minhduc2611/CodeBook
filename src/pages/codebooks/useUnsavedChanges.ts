@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-export const useUnsavedChanges = (
+const useUnsavedChanges = (
   predicateCallback: () => boolean,
-  message: string = 'You have unsaved changes - are you sure you wish to leave this page?'
+  message = 'You have unsaved changes - are you sure you wish to leave this page?'
 ) => {
   const router = useRouter();
   React.useEffect(() => {
@@ -32,3 +32,5 @@ export const useUnsavedChanges = (
     };
   });
 };
+
+export default useUnsavedChanges;

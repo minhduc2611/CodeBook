@@ -12,7 +12,11 @@ import { map } from 'rxjs/operators';
 export class ParamsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<unknown> {
     const request = context.switchToHttp().getRequest() as Request;
-console.log('ParamsInterceptor', {path: request.path, ...request.query, ...request.params,});
+    console.log('ParamsInterceptor', {
+      path: request.path,
+      ...request.query,
+      ...request.params
+    });
 
     /* after executing the handler add missing request query and params */
     return next.handle().pipe(
@@ -20,9 +24,9 @@ console.log('ParamsInterceptor', {path: request.path, ...request.query, ...reque
         return {
           ...request.query,
           ...request.params,
-          ...data,
+          ...data
         };
-      }),
+      })
     );
   }
 }

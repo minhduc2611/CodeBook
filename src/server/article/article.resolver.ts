@@ -7,7 +7,7 @@ import ArticleAddInput from './inputs/article-add.input';
 export class ArticleResolver {
   constructor(private readonly articleService: ArticleService) {}
 
-  @Query(() => [Article], {nullable: 'itemsAndList'})
+  @Query(() => [Article], { nullable: 'itemsAndList' })
   async articles() {
     return await this.articleService.getAll();
   }
@@ -32,8 +32,8 @@ export class ArticleResolver {
       article = await this.articleService.getOneById(_id);
     } else if (articleSlug) {
       article = await this.articleService.getOne({ articleSlug });
-    } 
-    console.log('article', article)
+    }
+    console.log('article', article);
     return article;
   }
 
@@ -42,13 +42,13 @@ export class ArticleResolver {
     @Args('_id') _id: string,
     @Args('input') input: ArticleAddInput
   ) {
-    let article = await this.articleService.updateOneById(_id, input);
+    const article = await this.articleService.updateOneById(_id, input);
     return article;
   }
 
   @Mutation(() => Number)
   async deleteArticle(@Args('_id') _id: string) {
-    let article = await this.articleService.deleteOneById(_id);
+    const article = await this.articleService.deleteOneById(_id);
     return article;
   }
 

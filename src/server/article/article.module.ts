@@ -5,9 +5,7 @@ import { ArticleService } from './article.service';
 import { Article } from './entities/article.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Article])],
-    providers: [ArticleResolver, ArticleService]
+  imports: [TypeOrmModule.forFeature([Article])],
+  providers: [ArticleResolver, ArticleService]
 })
-export class ArticleModule {
-
-}
+export class ArticleModule {}

@@ -5,12 +5,12 @@ import { CellObject } from './cell.entity';
 @Entity()
 @ObjectType()
 export class Article {
-  constructor () {
-    this._id = ''
-    this.article = []
-    this.articleSlug = ''
-    this.articleTitle = ''
-    this.cellOrder = []
+  constructor() {
+    this._id = '';
+    this.article = [];
+    this.articleSlug = '';
+    this.articleTitle = '';
+    this.cellOrder = [];
   }
 
   @Field()
@@ -21,9 +21,8 @@ export class Article {
   @Column()
   articleTitle: string;
 
-
   @Field(() => String!)
-  @Column({unique: true, nullable : true})
+  @Column({ unique: true, nullable: true })
   articleSlug: string;
 
   @Field(() => [String!], { nullable: true })

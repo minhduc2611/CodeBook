@@ -9,7 +9,6 @@ import { CellInput } from '../entities/cell.entity';
 
 @InputType()
 export default class ArticleAddInput {
-  
   @Field(() => String)
   articleTitle: string;
 

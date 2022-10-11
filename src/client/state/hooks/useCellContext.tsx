@@ -18,14 +18,10 @@ interface contextProps {
 export const useCellContext = () => useContext<contextProps>(CellContext);
 
 /** Wrapper  */
-const CellProvider: React.FC<any> = ({
-  children,
-  article
-}) => {
+const CellProvider: React.FC<any> = ({ children, article }) => {
   // const { called, loading, data } = useQuery<getOneArticleQuery>(FetchUserQuery, {
   //   variables: { id: articleId, articleSlug  }
   // });
-
 
   const [states, dispatch] = useReducer(
     CellReducer.default,
@@ -41,6 +37,7 @@ const CellProvider: React.FC<any> = ({
     if (article) {
       actions.setCells(article);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
   // useEffect(() => {
   //   console.log('articleId', articleId);

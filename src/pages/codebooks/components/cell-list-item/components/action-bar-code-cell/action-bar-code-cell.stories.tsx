@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 import ActionBarCodeCell from '.';
 
@@ -11,12 +11,11 @@ export default {
     moveCell: () => {},
     deleteCell: () => {},
     content: String,
-    updateCell: (id: string, value: string) => {}
+    updateCell: () => {}
   }
 } as ComponentMeta<typeof ActionBarCodeCell>;
 
 const Template: ComponentStory<typeof ActionBarCodeCell> = (args) => {
-  const [value, setValue] = useState('');
   return <ActionBarCodeCell {...args} />;
 };
 
@@ -34,5 +33,5 @@ Primary.args = {
   ReactDOM.render(element, document.getElementById('root'));
     
     `,
-  updateCell: (id: string, value: string) => {}
+  updateCell: () => {}
 };

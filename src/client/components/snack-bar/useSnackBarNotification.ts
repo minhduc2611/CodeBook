@@ -1,5 +1,5 @@
 export const useSnackBarNotification = () => {
-    return {
-        test: ''
-    }
-}
+  return {
+    test: ''
+  };
+};

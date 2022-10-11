@@ -1,5 +1,5 @@
-import { Article } from "./../../../../server/article/entities/article.entity";
-import { ArticleListActionType } from "./articleList.action-types";
+import { Article } from './../../../../server/article/entities/article.entity';
+import { ArticleListActionType } from './articleList.action-types';
 
 interface SearchRepositoriesAction {
   type: ArticleListActionType.FETCH_ARTICLE_LIST;

@@ -32,7 +32,7 @@ const CodeBookDetail: FC<CodeBookDetailProps> = ({ article, errorCode }) => {
     </div>
   );
 };
-const deserializedClass = (cls) => {
+const deserializedClass = (cls: any) => {
   return JSON.parse(JSON.stringify(cls));
 };
 export const getServerSideProps: GetServerSideProps<
@@ -41,14 +41,14 @@ export const getServerSideProps: GetServerSideProps<
   const slug = ctx.query.slug;
   console.log('slug', slug);
 
-  let a = deserializedClass(new Article());
-  console.log('slug ======== a Article', a);
+  const article = deserializedClass(new Article());
+  console.log('slug ======== a Article', article);
   if (slug === 'new') {
-    return { props: { article: a as Article, errorCode: 200 } };
+    return { props: { article: article as Article, errorCode: 200 } };
   }
 
   try {
-    let { data } = await AppApolloClient.query<FetchOneArticleResult>({
+    const { data } = await AppApolloClient.query<FetchOneArticleResult>({
       query: FetchOneArticleQuery,
       variables: { articleSlug: slug }
     });

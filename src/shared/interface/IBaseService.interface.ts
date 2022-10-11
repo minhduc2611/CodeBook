@@ -1,5 +1,5 @@
 export interface IBaseService {
-  getAll: () => {};
+  getAll: () => void;
   getOneById: {
     (id: string): Promise<any>;
   };

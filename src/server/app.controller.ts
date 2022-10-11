@@ -3,7 +3,8 @@ import {
   Get,
   Param,
   ParseIntPipe,
-  Render, UseInterceptors
+  Render,
+  UseInterceptors
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ParamsInterceptor } from './params.interceptor';
@@ -22,7 +23,7 @@ export class AppController {
   @Render('codebooks')
   @UseInterceptors(ParamsInterceptor)
   codebooks() {
-    return {}
+    return {};
   }
 
   @Get('/api/blog-posts')

@@ -1,7 +1,6 @@
-import { Cell } from 'dist/server/article/entities/cell.entity';
 import produce from 'immer';
 import { v4 as uuidv4 } from 'uuid';
-import { ArticleState } from '../../types/cell';
+import { ArticleState, Cell } from '../../types/cell';
 import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 import { ICellAction } from './cell.actions';
@@ -19,20 +18,20 @@ export const initialState: ArticleState = {
 const reducer = produce(
   (state: ArticleState = initialState, action: ICellAction) => {
     console.log('RENDERING', Math.random());
-    
+
     switch (action.type) {
       case CellActionType.UPDATE_ARTICLE_TITLE:
         const { text } = action.payload;
         return { ...state, title: text };
       case CellActionType.SET_CELLS:
         const { article } = action.payload;
-        let articleState: ArticleState = transform<Article, ArticleState>(
+        const articleState: ArticleState = transform<Article, ArticleState>(
           article
         );
         return { ...state, ...articleState };
       case CellActionType.UPDATE_CELLS:
         const { article: article2 } = action.payload;
-        let articleState2: ArticleState = transform<Article, ArticleState>(
+        const articleState2: ArticleState = transform<Article, ArticleState>(
           article2
         );
         return { ...state, ...articleState2 };

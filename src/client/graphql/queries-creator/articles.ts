@@ -9,7 +9,7 @@ import {
 import ArticleAddInput from './../../../server/article/inputs/article-add.input';
 
 export const fetchAllArticle = async () => {
-  let { data } = await AppApolloClient.query<ResponseArticles>({
+  const { data } = await AppApolloClient.query<ResponseArticles>({
     query: FetchAllArticleQuery
   });
 
@@ -18,7 +18,7 @@ export const fetchAllArticle = async () => {
 };
 
 export const deleteArticle = async (id: string) => {
-  let { data } = await AppApolloClient.mutate({
+  const { data } = await AppApolloClient.mutate({
     mutation: DeleteOneArticleMutation,
     variables: { id: id }
   });
@@ -28,7 +28,7 @@ export const deleteArticle = async (id: string) => {
 };
 
 export const updateArticle = async (id: string, article: ArticleAddInput) => {
-  let { data } = await AppApolloClient.mutate({
+  const { data } = await AppApolloClient.mutate({
     mutation: UpdateOneArticleMutation,
     variables: { id: id, article: article }
   });
@@ -38,7 +38,7 @@ export const updateArticle = async (id: string, article: ArticleAddInput) => {
 };
 
 export const addArticle = async (article: ArticleAddInput) => {
-  let { data } = await AppApolloClient.mutate({
+  const { data } = await AppApolloClient.mutate({
     mutation: AddOneArticleMutation,
     variables: { article: article }
   });

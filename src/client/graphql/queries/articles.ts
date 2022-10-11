@@ -16,8 +16,8 @@ export const FetchAllArticleQuery = gql`
   }
 `;
 export type ResponseArticles = {
-  articles : Article[]
-}
+  articles: Article[];
+};
 export const FetchOneArticleQuery = gql`
   query article($articleSlug: String!) {
     article(articleSlug: $articleSlug) {

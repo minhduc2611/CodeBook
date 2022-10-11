@@ -23,9 +23,9 @@ import { UserModule } from './user/user.module';
       type: 'mongodb',
       url: 'mongodb+srv://leminhduc:leminhduc@cluster0.9asgo.mongodb.net/?retryWrites=true&w=majority',
       database: 'nest-next-app',
-      ssl: true,  
+      ssl: true,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', 'public')

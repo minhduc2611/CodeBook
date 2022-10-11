@@ -8,7 +8,7 @@ export default {
   component: CodeCell,
   argTypes: {
     initialValue: String,
-    onChange: (text: String) => {}
+    onChange: () => {}
   }
 } as ComponentMeta<typeof CodeCell>;
 

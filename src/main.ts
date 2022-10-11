@@ -6,7 +6,7 @@ import { NODE_ENV, PORT } from './shared/constants/env';
 
 async function bootstrap() {
   const dev = NODE_ENV !== 'production';
-  const client = Next({ dev});
+  const client = Next({ dev });
   await client.prepare();
   const server = await NestFactory.create(AppModule);
   const renderer = server.get(RenderModule);

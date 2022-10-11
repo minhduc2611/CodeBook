@@ -1,8 +1,6 @@
 import { Divider } from '@mui/material';
 import { FC } from 'react';
-import {
-  ActionBar, TextEditor
-} from './../../../../../../client/components';
+import { ActionBar, TextEditor } from './../../../../../../client/components';
 import {
   Direction,
   IDeleteCellAction,

@@ -16,7 +16,7 @@ export function arrayToObject<T>(
   theArray: T[],
   by: string
 ): { [key: string]: T } {
-  let final = {};
+  const final = {};
 
   if (Object.entries(theArray).length === 0) {
     return final;

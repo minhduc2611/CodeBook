@@ -12,31 +12,29 @@ import ArticleAddInput from '../../../../server/article/inputs/article-add.input
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 import { useUnsavedChanges } from '../../useUnsavedChanges';
 
-interface DeleteArticleProps {}
-
 const unsavedChanges = (article: ArticleState) => {
   console.table([article, article.originalArticle]);
 
   if (!article || !article.originalArticle) {
     return false;
   }
-  let equalCellOrder = deepEqual(
+  const equalCellOrder = deepEqual(
     article.cellOrder,
     article.originalArticle.cellOrder
   );
-  let equalTitle = deepEqual(
+  const equalTitle = deepEqual(
     article.title,
     article.originalArticle.articleTitle
   );
-  let equalArticle = deepEqual(
+  const equalArticle = deepEqual(
     Object.values(article.article),
     article.originalArticle.article
   );
-  let allAreEqual = equalCellOrder && equalTitle && equalArticle;
+  const allAreEqual = equalCellOrder && equalTitle && equalArticle;
   return !allAreEqual; // article changed = all are not equal
 };
 
-const SaveArticleButton: FC<DeleteArticleProps> = () => {
+const SaveArticleButton: FC = () => {
   const {
     states: article,
     actions: { updateCells }

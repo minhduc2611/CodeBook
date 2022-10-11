@@ -8,13 +8,11 @@ import AddArticleButton from './components/add-article-button';
 
 const CodeBook = () => {
   const { fetchArticleList } = useArticleListActions();
-  const { data, loading, error } = useTypedSelector(
-    (state) => state.articleList
-  );
+  const { data, loading } = useTypedSelector((state) => state.articleList);
   console.log('data', data);
   useEffect(() => {
-    console.log('fetchArticleList');
     fetchArticleList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (loading) return 'loading';
   return (

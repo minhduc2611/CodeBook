@@ -1,4 +1,9 @@
-import { Code, FormatAlignLeft, FormatPaint, LightMode } from '@mui/icons-material';
+import {
+  Code,
+  FormatAlignLeft,
+  FormatPaint,
+  LightMode
+} from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import styles from './../../code-editor.module.scss';
 
@@ -7,14 +12,14 @@ const Dashboard = ({
   monacoEnabled,
   isJSXHighlightingOn,
   toggleJSXHighlighting,
-  isJSXCommentingOn,
-  toggleJSXCommenting,
+  // isJSXCommentingOn,
+  // toggleJSXCommenting,
   theme,
   toggleTheme,
   language,
   toggleLanguage,
-  onFormatClick,
-  OnRunCode
+  onFormatClick
+  // OnRunCode
 }) => {
   return (
     <div

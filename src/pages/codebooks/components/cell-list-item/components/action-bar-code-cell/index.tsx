@@ -2,10 +2,10 @@ import { Divider } from '@mui/material';
 import { FC } from 'react';
 import { ActionBar, CodeCell } from './../../../../../../client/components';
 import {
-    Direction,
-    IDeleteCellAction,
-    IMoveCellAction,
-    IUpdateCellAction
+  Direction,
+  IDeleteCellAction,
+  IMoveCellAction,
+  IUpdateCellAction
 } from './../../../../../../client/state/reducers/article/cell.actions';
 
 export interface ActionBarCodeCellProps {

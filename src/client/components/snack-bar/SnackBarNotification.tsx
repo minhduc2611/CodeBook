@@ -6,9 +6,9 @@ import React from 'react';
 
 export default function SnackBarNotification() {
   const [open, setOpen] = React.useState(true);
-  const handleClick = () => {
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = (
     event: React.SyntheticEvent | Event,

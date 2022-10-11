@@ -22,24 +22,24 @@ export class ArticleService implements IBaseService {
   }
 
   async deleteOneById(id: string): Promise<STATUS> {
-    let a = await this.articleRepository.deleteOne({ _id: id });
+    const a = await this.articleRepository.deleteOne({ _id: id });
     return a.result.ok ? STATUS.SUCCESS : STATUS.FAIL;
   }
   async getOneById(id: string): Promise<Article> {
-    let query: MongoFindOneOptions<Article> = { where: { _id: id } };
+    const query: MongoFindOneOptions<Article> = { where: { _id: id } };
     return await this.articleRepository.findOne(query);
   }
 
   async getOne({ ...params }): Promise<Article> {
-    let query: MongoFindOneOptions<Article> = { where: { ...params } };
-    let result = await this.articleRepository.findOne(query);
+    const query: MongoFindOneOptions<Article> = { where: { ...params } };
+    const result = await this.articleRepository.findOne(query);
     console.log('type', typeof result);
     console.log('result', result);
     return result;
   }
 
   async updateOneById(id: string, input: ArticleAddInput): Promise<STATUS> {
-    let a: UpdateWriteOpResult = await this.articleRepository.updateOne(
+    const a: UpdateWriteOpResult = await this.articleRepository.updateOne(
       { _id: id },
       { $set: { ...input, articleSlug: createSlug(input.articleTitle) } }
     );
