@@ -10,6 +10,7 @@ const CodeBook = () => {
   const { fetchArticleList } = useArticleListActions();
   const { data, loading } = useTypedSelector((state) => state.articleList);
   console.log('data', data);
+  console.log('env', process.env);
   useEffect(() => {
     fetchArticleList();
     // eslint-disable-next-line react-hooks/exhaustive-deps

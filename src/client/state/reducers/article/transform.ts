@@ -1,4 +1,5 @@
-import { ArticleState, Cell } from '../../types/cell';
+import { ArticleState } from '../../types/article';
+import { Cell } from '../../types/cell';
 import { arrayToObject } from '../../utils/reducerUtils';
 import { Article } from './../../../../server/article/entities/article.entity';
 import ArticleAddInput from './../../../../server/article/inputs/article-add.input';
@@ -23,8 +24,6 @@ export function transform<A extends Article, AS extends ArticleState>(
   state.slug = article.articleSlug;
   state.article = arrayToObject<Cell>(article.article, 'id');
   state.originalArticle = article;
-  console.log('transformed', state);
-
   return state;
 }
 
