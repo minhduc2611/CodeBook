@@ -27,4 +27,6 @@ export type ArrayToObjectByKey<
 };
 
 /** Apollo */
-export type ApolloResponse<T, QueryName extends string> = {[K in QueryName]: T}
+export type ApolloResponse<T, QueryName extends string> = {
+  [K in QueryName]: T;
+};
