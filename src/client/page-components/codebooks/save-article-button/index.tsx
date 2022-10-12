@@ -6,11 +6,11 @@ import {
   updateArticle
 } from '../../../../client/graphql/queries-creator/articles';
 import { transformStateToEntity } from '../../../../client/state/reducers/article/transform';
-import { ArticleState } from '../../../../client/state/types/cell';
 import ArticleAddInput from '../../../../server/article/inputs/article-add.input';
 
 import { useUnsavedChanges } from '../../../../client/hooks';
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
+import { ArticleState } from '../../../../client/state/types/entities/article';
 
 const unsavedChanges = (article: ArticleState) => {
   console.table([article, article.originalArticle]);

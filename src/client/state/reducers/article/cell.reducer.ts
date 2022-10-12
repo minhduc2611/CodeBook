@@ -1,6 +1,7 @@
 import produce from 'immer';
 import { v4 as uuidv4 } from 'uuid';
-import { ArticleState, Cell } from '../../types/cell';
+import { ArticleState } from '../../types/entities/article';
+import { Cell } from '../../types/entities/cell';
 import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 import { ICellAction } from './cell.actions';

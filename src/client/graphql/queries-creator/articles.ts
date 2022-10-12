@@ -1,20 +1,34 @@
+import { ApolloResponse } from 'src/client/state/types/base';
+import { Article } from 'src/server/article/entities/article.entity';
 import { AppApolloClient } from '../client';
 import {
   AddOneArticleMutation,
   DeleteOneArticleMutation,
   FetchAllArticleQuery,
-  ResponseArticles,
+  FetchOneArticleQuery,
   UpdateOneArticleMutation
 } from '../queries/articles';
 import ArticleAddInput from './../../../server/article/inputs/article-add.input';
 
-export const fetchAllArticle = async () => {
-  const { data } = await AppApolloClient.query<ResponseArticles>({
+export const fetchAllArticle = async (): Promise<Article[]> => {
+  const { data } = await AppApolloClient.query<
+    ApolloResponse<Article[], 'articles'>
+  >({
     query: FetchAllArticleQuery
   });
 
-  // notification manager
+  //todo notification manager
   return data.articles;
+};
+export const fetchOneArticleBySlug = async (slug: string): Promise<Article> => {
+  const { data } = await AppApolloClient.query<
+    ApolloResponse<Article, 'article'>
+  >({
+    query: FetchOneArticleQuery,
+    variables: { articleSlug: slug }
+  });
+  //todo notification manager
+  return data.article;
 };
 
 export const deleteArticle = async (id: string) => {

@@ -1,12 +1,8 @@
 import { GetServerSideProps } from 'next';
 import Error from 'next/error';
 import { FC } from 'react';
+import { fetchOneArticleBySlug } from 'src/client/graphql/queries-creator/articles';
 import CellProvider from '../../client/state/hooks/useCellContext';
-import { AppApolloClient } from './../../client/graphql/client';
-import {
-  FetchOneArticleQuery,
-  FetchOneArticleResult
-} from './../../client/graphql/queries/articles';
 import ArticleTitleInput from './../../client/page-components/codebooks/article-title-input';
 import CellList from './../../client/page-components/codebooks/cell-list/cell-list';
 import DeleteArticleButton from './../../client/page-components/codebooks/delete-article-button';
@@ -38,21 +34,15 @@ const deserializedClass = (cls: any) => {
 export const getServerSideProps: GetServerSideProps<
   CodeBookDetailProps
 > = async (ctx) => {
-  const slug = ctx.query.slug;
-  console.log('slug', slug);
-
+  const slug = ctx.query.slug as string;
   const article = deserializedClass(new Article());
-  console.log('slug ======== a Article', article);
   if (slug === 'new') {
     return { props: { article: article as Article, errorCode: 200 } };
   }
 
   try {
-    const { data } = await AppApolloClient.query<FetchOneArticleResult>({
-      query: FetchOneArticleQuery,
-      variables: { articleSlug: slug }
-    });
-    return { props: { article: data.article, errorCode: 200 } };
+    const articleData = await fetchOneArticleBySlug(slug);
+    return { props: { article: articleData, errorCode: 200 } };
   } catch (error) {
     console.log('error', error);
     return { props: { errorCode: 404, article: {} as Article } };

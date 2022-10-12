@@ -1,5 +1,5 @@
+import { Cell } from '../../../state/types/entities/cell';
 import { useCellContext } from './../../../../client/state/hooks/useCellContext';
-import { Cell } from './../../../../client/state/types/cell';
 import style from './cell-list-item.module.scss';
 import ActionBarCodeCell from './components/action-bar-code-cell';
 import ActionBarTextCell from './components/action-bar-text-cell';

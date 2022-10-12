@@ -1,5 +1,5 @@
-import { Article } from '../../../server/article/entities/article.entity';
-import { Nullable, UIState } from './base';
+import { Article } from '../../../../server/article/entities/article.entity';
+import { Nullable, UIState } from '../base';
 import { Cell } from './cell';
 
 export type UIArticleState = UIState<

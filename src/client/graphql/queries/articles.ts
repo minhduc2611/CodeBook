@@ -1,5 +1,4 @@
 import gql from 'graphql-tag';
-import { Article } from './../../../server/article/entities/article.entity';
 export const FetchAllArticleQuery = gql`
   query {
     articles {
@@ -15,9 +14,10 @@ export const FetchAllArticleQuery = gql`
     }
   }
 `;
-export type ResponseArticles = {
-  articles: Article[];
-};
+
+// export type ResponseArticles = {
+//   articles: Article[];
+// };
 export const FetchOneArticleQuery = gql`
   query article($articleSlug: String!) {
     article(articleSlug: $articleSlug) {
@@ -34,9 +34,9 @@ export const FetchOneArticleQuery = gql`
   }
 `;
 
-export type FetchOneArticleResult = {
-  article: Article;
-};
+// export type FetchOneArticleResult = {
+//   article: Article;
+// };
 
 export const DeleteOneArticleMutation = gql`
   mutation deleteArticle($id: String!) {

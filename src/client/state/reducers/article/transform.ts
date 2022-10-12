@@ -1,5 +1,5 @@
-import { ArticleState } from '../../types/article';
-import { Cell } from '../../types/cell';
+import { ArticleState } from '../../types/entities/article';
+import { Cell } from '../../types/entities/cell';
 import { arrayToObject } from '../../utils/reducerUtils';
 import { Article } from './../../../../server/article/entities/article.entity';
 import ArticleAddInput from './../../../../server/article/inputs/article-add.input';

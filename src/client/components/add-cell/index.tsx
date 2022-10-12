@@ -2,8 +2,8 @@ import { InsertPhoto } from '@mui/icons-material';
 import CodeIcon from '@mui/icons-material/Code';
 import NotesIcon from '@mui/icons-material/Notes';
 import { IconButton } from '@mui/material';
+import { CellTypes } from '../../state/types/entities/cell';
 import { IInsertCellAfterAction } from './../../../client/state/reducers/article/cell.actions';
-import { CellTypes } from './../../../client/state/types/cell';
 import styles from './add-cell.module.scss';
 export interface AddCellProps {
   previousCellId: string | null;

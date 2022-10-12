@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useReducer } from 'react';
 import { cellActionCreators } from '..';
 import { CellReducer } from '../reducers';
 import { CellContext } from '../stores/context/cell.context';
-import { ArticleState } from '../types/cell';
+import { ArticleState } from '../types/entities/article';
 import { bindsActionCreatorsWithDispatch } from '../utils/reducerUtils';
 
 interface contextProps {

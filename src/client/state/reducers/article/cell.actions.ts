@@ -1,4 +1,4 @@
-import { CellTypes } from '../../types/cell';
+import { CellTypes } from '../../types/entities/cell';
 import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 
