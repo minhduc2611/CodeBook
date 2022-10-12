@@ -1,10 +1,12 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { BASE_URL, NODE_ENV, PORT } from './../../../shared/constants/env';
+import {
+  NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_NODE_ENV, NEXT_PUBLIC_PORT
+} from 'src/client/constants/client-env';
 
 export const AppApolloClient = new ApolloClient({
   uri:
-    NODE_ENV === 'development'
-      ? `${BASE_URL}:${PORT}/graphql`
-      : `${BASE_URL}/graphql`,
+    NEXT_PUBLIC_NODE_ENV === 'development'
+      ? `${NEXT_PUBLIC_BASE_URL}:${NEXT_PUBLIC_PORT}/graphql`
+      : `${NEXT_PUBLIC_BASE_URL}/graphql`,
   cache: new InMemoryCache()
 });
