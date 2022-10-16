@@ -21,10 +21,12 @@ const bundle = async (rawCode: string) => {
       code: result.outputFiles[0].text,
       err: null
     };
-  } catch (error: any) {
+  } catch (error2: any) {
+    console.log('error bundling 1', error2);
+
     return {
       code: '',
-      err: error
+      err: error2
     };
   }
 };
