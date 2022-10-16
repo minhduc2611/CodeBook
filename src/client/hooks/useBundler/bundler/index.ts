@@ -8,7 +8,7 @@ const bundle = async (rawCode: string) => {
     result = await build('');
   } catch (error) {
     console.log('error bundling 1', error);
-    
+
     await esBuild.initialize({
       worker: true,
       wasmURL: '/esbuild.wasm'
