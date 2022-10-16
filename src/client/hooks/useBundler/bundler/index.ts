@@ -1,4 +1,5 @@
 import * as esBuild from 'esbuild-wasm';
+
 import { fetchPlugin } from './plugins/fetch-plugin';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 
@@ -11,7 +12,8 @@ const bundle = async (rawCode: string) => {
 
     await esBuild.initialize({
       worker: true,
-      wasmURL: '/esbuild.wasm'
+      wasmURL: 'https://unpkg.com/esbuild-wasm@0.14.53/esbuild.wasm'
+      // wasmModule: 'esbuild.wasm'
     });
   }
 
@@ -22,7 +24,7 @@ const bundle = async (rawCode: string) => {
       err: null
     };
   } catch (error2: any) {
-    console.log('error bundling 1', error2);
+    console.log('error bundling 2', error2);
 
     return {
       code: '',
