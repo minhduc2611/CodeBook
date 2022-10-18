@@ -12,7 +12,8 @@ const bundle = async (rawCode: string) => {
 
     await esBuild.initialize({
       worker: true,
-      wasmURL: 'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.14.54/esbuild.wasm'
+      wasmURL:
+        'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.14.54/esbuild.wasm'
       // wasmURL: 'https://unpkg.com/esbuild-wasm@0.14.54/esbuild.wasm'
       // wasmModule: 'esbuild.wasm'
     });
