@@ -12,9 +12,9 @@ const bundle = async (rawCode: string) => {
 
     await esBuild.initialize({
       worker: true,
-      wasmURL:
-        'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.14.54/esbuild.wasm'
-      // wasmURL: 'https://unpkg.com/esbuild-wasm@0.14.54/esbuild.wasm'
+      // wasmURL:
+      // 'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.14.54/esbuild.wasm'
+      wasmURL: 'https://unpkg.com/esbuild-wasm@0.14.54/esbuild.wasm'
       // wasmModule: 'esbuild.wasm'
     });
   }
@@ -40,10 +40,10 @@ const build = async (rawCode: string) =>
     entryPoints: ['index.js'],
     bundle: true,
     write: false,
-    plugins: [unpkgPathPlugin(), fetchPlugin(rawCode)],
-    define: {
-      'process.env.NODE_ENV': '"production"',
-      global: 'window'
-    }
+    plugins: [unpkgPathPlugin(), fetchPlugin(rawCode)]
+    // define: {
+    //   'process.env.NODE_ENV': '"production"',
+    //   global: 'window'
+    // }
   });
 export default bundle;

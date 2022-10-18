@@ -10,9 +10,9 @@ import { useCallback, useRef, useState } from 'react';
 import styles from './code-editor.module.scss';
 import Dashboard from './components/dashboard';
 export interface CodeEditorProps {
-  initialValue: string;
-  onChange(value: string): void;
-  onSave(): void;
+  initialValue?: string;
+  onChange?(value: string): void;
+  onSave?(): void;
 }
 
 // fancy dynamic loader attached to the @monaco-editor/react's onMount callback
@@ -84,9 +84,9 @@ const activateMonacoJSXHighlighter = async (monacoEditor, monaco) => {
 };
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
-  onSave,
-  onChange,
-  initialValue
+  onSave = () => {},
+  onChange = () => {},
+  initialValue = ''
 }) => {
   const [theme, setTheme] = useState('vs-dark');
   const [language, setLanguage] = useState('javascript');

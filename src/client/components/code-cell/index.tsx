@@ -1,5 +1,4 @@
 import { memo, useCallback, useState } from 'react';
-import { useBundler } from 'src/client/hooks';
 import CodeEditor from '../code-editor';
 import Preview from '../preview';
 import Resizable from '../resizable';
@@ -25,10 +24,10 @@ const CodeCell: React.FC<CodeCellProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { setInput, doBundleCode, code, errorString } = useBundler({
-    initiateInput: initialValue,
-    inputSetter: cellContentSetter
-  });
+  // const { setInput, doBundleCode, code, errorString } = useBundler({
+  //   initiateInput: initialValue,
+  //   inputSetter: cellContentSetter
+  // });
   const [resizeInProgress, setResizeInProgress] = useState(false);
   return (
     <div className={['mb-3', className].join(' ')}>
@@ -60,17 +59,17 @@ const CodeCell: React.FC<CodeCellProps> = ({
               }}
             >
               <CodeEditor
-                onSave={doBundleCode}
+                // onSave={doBundleCode}
                 initialValue={initialValue}
-                onChange={setInput}
+                // onChange={setInput}
               />
             </div>
           </Resizable>
           <div className={styles.webConsole} id="web-console">
             <Preview
               shouldBlockUI={resizeInProgress}
-              code={code}
-              err={errorString}
+              // code={code}
+              // err={errorString}
             />
           </div>
         </div>

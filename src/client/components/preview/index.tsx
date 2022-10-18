@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import previewStyles from './preview.module.scss';
 
 interface PreviewProps {
-  code: string;
-  err: string;
+  code?: string;
+  err?: string;
   shouldBlockUI: boolean;
 }
 

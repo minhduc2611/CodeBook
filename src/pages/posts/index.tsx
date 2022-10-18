@@ -1,4 +1,4 @@
-import * as esbuild from 'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.13.6/esm/browser.min.js';
+import * as esbuild from 'esbuild-wasm';
 import { FC } from 'react';
 import { BlogPost } from './../../shared/blog-post';
 
@@ -17,12 +17,12 @@ async function compile(code) {
       'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.13.6/esbuild.wasm'
   });
 
-  const options = {
-    loader: 'jsx'
-  };
+  // const options = {
+  //   loader: 'jsx'
+  // };
 
   try {
-    const result = await esbuild.transform(code, options);
+    const result = await esbuild.transform(code);
     return result.code;
   } catch (err) {
     console.log(err);
