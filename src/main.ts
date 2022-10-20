@@ -13,6 +13,7 @@ async function bootstrap() {
   /* viewsDir null means that nest-next should look for pages in root dir */
   // renderer.register(server, client, { viewsDir: null, passthrough404: true });
 
+  console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
   await server.listen(PORT);
 }
 bootstrap();
