@@ -1,4 +1,17 @@
 {
+  "version" : 1,
+  "builds" : [
+    {
+      "src": "dist/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
