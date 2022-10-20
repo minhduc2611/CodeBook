@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { CodeCell } from 'src/client/components';
+import { CodeCell } from './../../client/components';
 import AddArticleButton from './../../client/page-components/codebooks/add-article-button';
 import { useArticleListActions } from './../../client/state/hooks/useArticleListActions';
 import { useTypedSelector } from './../../client/state/hooks/useTypedSelector';
@@ -27,7 +27,7 @@ const CodeBook = () => {
             <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
           </p>
         ))}
-
+      Code cell
       <CodeCell initialValue={code} onChange={setCode} />
       <AddArticleButton />
     </div>
