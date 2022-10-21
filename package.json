@@ -9,7 +9,9 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npm run build:next && npm run build:nest",
-    "start": "node dist/main",
+    "build:next": "next build",
+    "build:nest": "nest build --path ./tsconfig.server.json",
+    "start": "node ./dist/server/main.js",
     "start:next": "next dev",
     "start:dev": "NODE_ENV=development nest start --path ./tsconfig.server.json --watch",
     "start:debug": "nest start --path ./tsconfig.server.json --debug --watch",
