@@ -73,7 +73,7 @@ const Home: FC<THomeProps> = ({}) => {
   return (
     <div>
       <h1>Home</h1>
-      App11
+      <App11 />
       {/* {blogPosts.map(({ title, id }) => (
         <div key={id}>
           <Link href={`/posts/${id}`}>{title}</Link>
