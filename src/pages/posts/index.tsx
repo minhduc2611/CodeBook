@@ -13,16 +13,15 @@ type THomeProps = {
 import { useEffect } from 'react';
 async function compile(code) {
   await esbuild.initialize({
-    wasmURL:
-      'https://cdn.jsdelivr.net/npm/@netlify/esbuild-wasm@0.13.6/esbuild.wasm'
+    wasmURL: 'https://unpkg.com/esbuild-wasm@0.14.54/esbuild.wasm'
   });
 
-  // const options = {
-  //   loader: 'jsx'
-  // };
+  const options = {
+    loader: 'jsx' as esbuild.Loader
+  };
 
   try {
-    const result = await esbuild.transform(code);
+    const result = await esbuild.transform(code, options);
     return result.code;
   } catch (err) {
     console.log(err);
