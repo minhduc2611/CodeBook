@@ -12,8 +12,8 @@ const CodeBook = () => {
   const { data, loading } = useTypedSelector((state) => state.articleList);
 
   const [code, setCode] = useState('');
-  console.log('data', data);
-  console.log('env', process.env);
+  console.log('data Code cell', data);
+  console.log('env Code cell', process.env);
   useEffect(() => {
     fetchArticleList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,14 +21,14 @@ const CodeBook = () => {
   if (loading) return 'loading';
   return (
     <div>
+      Code cell
+      <CodeCell initialValue={code} onChange={setCode} />
       {data &&
         data.map((a, idx) => (
           <p key={idx}>
             <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
           </p>
         ))}
-      Code cell
-      <CodeCell initialValue={code} onChange={setCode} />
       <AddArticleButton />
     </div>
   );
