@@ -28,11 +28,8 @@ async function compile(code) {
   }
 }
 const code = `
-  import React from 'https://cdn.skypack.dev/react';
-  import ReactDOM from 'https://cdn.skypack.dev/react-dom';
-
-  import a from './sample';
-  console.log(a);
+  import React from 'react';
+  import ReactDOM from 'react-dom';
 
   function App() {
     const [count, setCount] = React.useState(0);
@@ -54,6 +51,7 @@ const code = `
 
 function App11() {
   useEffect(() => {
+    console.log('compiling');
     compile(code).then((compiled) => {
       console.log('compiled', compiled);
     });
