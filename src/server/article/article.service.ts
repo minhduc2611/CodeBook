@@ -58,6 +58,3 @@ export class ArticleService implements IBaseService {
     return this.articleRepository.save(article);
   }
 }
-
-// gửi mai ctc : Vytt4 cc anh TuanNDH
-// xong mock, nhờ chị Vy + anh review giúp
