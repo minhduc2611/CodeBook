@@ -1,0 +1,112 @@
+mutation createUser {
+  createUser(input: {
+    username: "MINH",
+    password: "ble"
+  }) {
+    _id,
+    username,
+    password
+  }
+}
+
+query {
+  users {
+    _id,
+    username,
+    password
+  }
+}
+
+# Write your query or mutation here
+mutation createArticle {
+  createArticle(
+    input: {
+      articleTitle: "Bài 3: học Reactjs Component",
+      cellOrder: [
+        "7f132c44-c9ed-4ef0-a11f-d8dad2f2144c"
+        "bee61a08-1b50-4412-b081-7f2c3284f3f6"
+      ]
+      article: [
+        {
+          content: "hi hi hio hi hi hi     333    "
+          id: "7f132c44-c9ed-4ef0-a11f-d8dad2f2144c"
+          type: "text"
+        }
+        {
+          content: "123123123 333"
+          id: "bee61a08-1b50-4412-b081-7f2c3284f3f6"
+          type: "text"
+        }
+      ]
+    }
+  ) {
+    _id
+    cellOrder
+    article {
+      id
+    }
+  }
+}
+
+
+# Write your query or mutation here
+mutation updateArticle($id: String!, $article: ArticleAddInput!) {
+  updateArticle(_id: $id, input: $article)
+}
+# variables
+{    "id": "03ed295a-5407-4e3d-9063-81406e81ef4d",
+    "article": {
+      "article": [
+        {
+          "id": "ca35a02d-f32a-48d9-b16b-2f8fc79dcc08",
+          "type": "code",
+          "content": "import React from 'react';\nimport ReactDom from 'react-dom';\n\nconst Father = () => {\n  const [fatherState, setFatherState] = React.useState('default');\n  return (\n    <>\n      Father : {fatherState}\n      <br />\n      Son :\n      <br />\n      <Son\n        onButtonClick={(e) => {\n          console.log(e);\n          setFatherState(e);\n        }}\n      />\n    </>\n  );\n};\n\nconst Son = ({ onButtonClick = () => { } }) => {\n  const [sonState, setSonState] = React.useState('son');\n  return <button onClick={() => onButtonClick('data from son')}>hi</button>;\n};\n\nconst root = ReactDom.createRoot(document.getElementById('root'));\n\nroot.render(<Father />);"
+        },
+        {
+          "id": "59e8f625-0e14-49a8-b2e8-6b0cd695b3e9",
+          "type": "text",
+          "content": "> coin với token khác nhau như thế nào ?\n\nchịu  :)  ???????\n\n - tai sao lai khong update ?????? khong hieu"
+        }
+      ],
+      "cellOrder": [
+        "59e8f625-0e14-49a8-b2e8-6b0cd695b3e9",
+        "ca35a02d-f32a-48d9-b16b-2f8fc79dcc08"
+      ],
+      "articleTitle": "Bài 4: Child Conponent Pass Data to Father 1"
+    }}
+
+# Write your query or mutation here
+mutation deleteArticle($id: String!) {
+  deleteArticle(_id: $id)
+}
+# variables
+{
+  "id":"9e4afb0f-5a9e-4719-901f-6866951b01ad"
+}
+
+query {
+  articles {
+    _id
+    cellOrder
+    articleTitle
+    articleSlug
+    article {
+      content
+      id
+      type
+    }
+  }
+}
+
+
+query {
+  article(articleSlug : "Bai-4-Child-Conponent-Pass-Data-to-Father-1") {
+    _id
+    cellOrder
+    article {
+      content
+      id
+      type
+    }
+  }
+}
