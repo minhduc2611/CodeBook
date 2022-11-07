@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import deepEqual from 'deep-equal';
 import { FC } from 'react';
+import toast from 'react-hot-toast';
 import {
   addArticle,
   updateArticle
@@ -8,13 +9,13 @@ import {
 import { transformStateToEntity } from '../../../../client/state/reducers/article/transform';
 import ArticleAddInput from '../../../../server/article/inputs/article-add.input';
 
-import { useUnsavedChanges } from '../../../../client/hooks';
+import { useRouter } from 'next/router';
+import { useService } from '../../../../client/hooks';
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 import { ArticleState } from '../../../../client/state/types/entities/article';
+import { UnsavedChanges } from './UnsavedChanges';
 
 const unsavedChanges = (article: ArticleState) => {
-  console.table([article, article.originalArticle]);
-
   if (!article || !article.originalArticle) {
     return false;
   }
@@ -40,11 +41,17 @@ const SaveArticleButton: FC = () => {
     actions: { updateCells }
   } = useCellContext();
 
-  useUnsavedChanges(() => unsavedChanges(article));
+  const router = useRouter();
+
+  const unsavedChangesService = useService(
+    new UnsavedChanges('AAAAAAAAAAAAAAAAAA', router)
+  );
+  // console.log('unsavedChanges', unsavedChanges(article));
+  // // useUnsavedChanges(() => unsavedChanges(article));
+
+  unsavedChangesService.hook(() => unsavedChanges(article));
 
   const handleSaveArticle = async () => {
-    console.log('article.originalArticle', article.originalArticle);
-    console.log('article', article);
     try {
       const saveOrAddArticle: ArticleAddInput = transformStateToEntity<
         ArticleState,
@@ -56,7 +63,11 @@ const SaveArticleButton: FC = () => {
         await addArticle(saveOrAddArticle);
       }
 
-      updateCells({ ...article.originalArticle, ...saveOrAddArticle });
+      await updateCells({ ...article.originalArticle, ...saveOrAddArticle });
+      console.log('handleSaveArticle unsavedChanges', unsavedChanges(article));
+
+      unsavedChangesService.push('/codebooks');
+      toast('Save Successfully');
     } catch (error) {}
   };
   return (

@@ -20,12 +20,6 @@ const Resizable: React.FC<ResizableProps> = ({
   useEffect(() => {
     if (direction === 'horizontal') {
       // horizontal
-      console.log('horizontal', styles);
-      // reactResizableHandle: "XlYBXIhzTfTF457i2Y_P"
-      // reactResizableHandleE: "CKBvCn_prgc6OLThuFWQ"
-      // reactResizableHandleS: "Gak2X5_KbVBB7hvf5swN"
-      // resizableBox: "xiPQ3UIfQeamHCcMWc3a"
-      // resizeHorizontal: "SqeMbZH0p_sjzLJOtHGw"
       setResizableProps({
         onResizeStart: onResizeStart,
         onResizeStop: onResizeStop,
@@ -48,7 +42,6 @@ const Resizable: React.FC<ResizableProps> = ({
       setResizableProps({
         onResizeStart: onResizeStart,
         onResizeStop: (a: any) => {
-          console.log('heyyyy', onResizeStop);
           onResizeStop(a);
         },
         className: [styles.resizableBox].join(' '),

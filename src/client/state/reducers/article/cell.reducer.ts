@@ -6,7 +6,6 @@ import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
 import { ICellAction } from './cell.actions';
 import { transform } from './transform';
-
 export const initialState: ArticleState = {
   id: '',
   title: '',
@@ -18,8 +17,6 @@ export const initialState: ArticleState = {
 
 const reducer = produce(
   (state: ArticleState = initialState, action: ICellAction) => {
-    console.log('RENDERING', Math.random());
-
     switch (action.type) {
       case CellActionType.UPDATE_ARTICLE_TITLE:
         const { text } = action.payload;
@@ -80,9 +77,6 @@ const reducer = produce(
           type: action.payload.type,
           id: uuidv4()
         };
-        console.log('state 1', state);
-        console.log('state 1 article', state.article);
-
         state.article[newCell.id] = newCell;
 
         const foundCellIndex = state.cellOrder.findIndex(

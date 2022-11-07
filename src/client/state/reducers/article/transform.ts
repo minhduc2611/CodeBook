@@ -8,10 +8,6 @@ export function transform<A extends Article, AS extends ArticleState>(
   article: A
 ) {
   const state = {} as AS;
-  console.log('article 1', article);
-  console.log('article 1.1', article.article);
-  console.log('article 2', Object.entries(article.article).length);
-
   //   if (Object.entries(article.article).length === 0) {
   //     console.log('article 3', article);
   //     state.originalArticle = article;

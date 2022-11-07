@@ -98,14 +98,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   const theMonacoEditorRef = useRef<MonacoTypes.editor.IStandaloneCodeEditor>();
 
   const handleEditorDidMount: OnMount = useCallback((monacoEditor, monaco) => {
-    console.log('setIsEditorReady1 ', !!monacoEditor);
-
     activateMonacoJSXHighlighter(monacoEditor, monaco)
       .then((monacoJSXHighlighterRefCurrent) => {
         monacoJSXHighlighterRef.current = monacoJSXHighlighterRefCurrent;
         theMonacoEditorRef.current = monacoEditor;
         setIsEditorReady(!!monacoEditor);
-        console.log('setIsEditorReady2 ', !!monacoEditor);
         setIsJSXHighlightingOn(
           monacoJSXHighlighterRefCurrent.isToggleJSXHighlightingOn()
         );
@@ -165,7 +162,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
       !!monacoJSXHighlighterRef.current?.toggleJSXCommenting()
     );
   }, []);
-
+  console.log('code cell initialValue', initialValue);
   const editorProps: EditorProps = {
     theme,
     language,

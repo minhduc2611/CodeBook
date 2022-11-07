@@ -33,8 +33,6 @@ export class UserService {
   ) {}
 
   async findAll(): Promise<User[]> {
-    console.log('findAll findAll findAll');
-
     // return [
     //   { username: 'duc', _id: '1', password: 'ble' },
     //   { username: 'duc2', _id: '2', password: 'ble' }
