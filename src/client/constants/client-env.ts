@@ -2,7 +2,8 @@ export const isServer = typeof window === 'undefined';
 
 export const isClient = !isServer;
 
-export const NEXT_PUBLIC_NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV;
+export const NEXT_PUBLIC_NODE_ENV =
+  process.env.NEXT_PUBLIC_NODE_ENV || 'development';
 
 export const NEXT_PUBLIC_PORT = process.env.NEXT_PUBLIC_PORT || 3000;
 

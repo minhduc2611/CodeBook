@@ -73,7 +73,7 @@ const SaveArticleButton: FC = () => {
   return (
     <div>
       <Button
-        // href="/codebooks"
+        href="/codebooks"
         disabled={!unsavedChanges(article)} // disabled when nothing changed
         onClick={handleSaveArticle}
       >

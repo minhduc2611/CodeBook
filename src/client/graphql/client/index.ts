@@ -7,13 +7,13 @@ import {
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: 'no-cache',
-    errorPolicy: 'ignore',
+    errorPolicy: 'ignore'
   },
   query: {
     fetchPolicy: 'no-cache',
-    errorPolicy: 'all',
-  },
-}
+    errorPolicy: 'all'
+  }
+};
 
 export const AppApolloClient = new ApolloClient({
   uri:
@@ -21,6 +21,5 @@ export const AppApolloClient = new ApolloClient({
       ? `${NEXT_PUBLIC_BASE_URL}:${NEXT_PUBLIC_PORT}/graphql`
       : `${NEXT_PUBLIC_BASE_URL}/graphql`,
   cache: new InMemoryCache({}),
-  defaultOptions: defaultOptions,
-
+  defaultOptions: defaultOptions
 });

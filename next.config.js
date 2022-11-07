@@ -23,8 +23,6 @@ const nextConfig = removeImports({
     if (!isServer) {
       config.resolve.fallback.fs = false;
     }
-    config.mode = 'development';
-    config.hmr = false;
     return config;
   }
 });

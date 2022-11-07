@@ -26,7 +26,7 @@ const CodeBookDetail: FC = () => {
         try {
           const articleData = await fetchOneArticleBySlug(slug);
           console.log('articleData????', articleData);
-          
+
           setArticle(articleData);
         } catch (error) {
           setArticle({} as Article);
