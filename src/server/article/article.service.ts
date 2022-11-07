@@ -17,7 +17,6 @@ export class ArticleService implements IBaseService {
   ) {}
 
   async getAll(): Promise<Article[]> {
-    console.log('getAll');
     return this.articleRepository.find();
   }
 
@@ -33,8 +32,6 @@ export class ArticleService implements IBaseService {
   async getOne({ ...params }): Promise<Article> {
     const query: MongoFindOneOptions<Article> = { where: { ...params } };
     const result = await this.articleRepository.findOne(query);
-    console.log('type', typeof result);
-    console.log('result', result);
     return result;
   }
 
@@ -53,8 +50,6 @@ export class ArticleService implements IBaseService {
     article.cellOrder = input.cellOrder;
     article.articleTitle = input.articleTitle;
     article.articleSlug = createSlug(input.articleTitle);
-    console.log('========>', article.articleSlug);
-
     return this.articleRepository.save(article);
   }
 }

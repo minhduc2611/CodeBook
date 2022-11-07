@@ -49,7 +49,6 @@ const TextEditor: React.FC<TextEditorProps> = ({
     };
   }, []);
 
-  console.log('rerender', Math.random());
   if (editing) {
     return (
       <div className={styles.textEditor} ref={ref}>

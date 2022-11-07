@@ -5,7 +5,9 @@
   "author": "ducleminh",
   "private": true,
   "license": "UNLICENSED",
-  "cacheDirectories": [".next/cache"],
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npm run build:next && npm run build:nest",
@@ -68,8 +70,10 @@
     "next": "^12.2.5",
     "next-remove-imports": "^1.0.7",
     "npm": "^8.18.0",
+    "prettier": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.0",
     "react-redux": "^8.0.2",
     "react-resizable": "^3.0.4",
     "reflect-metadata": "^0.1.13",
@@ -79,7 +83,6 @@
     "slugify": "^1.6.5",
     "typeorm": "^0.3.9",
     "uuid": "^8.3.2",
-    "prettier": "^2.3.2",
     "web3": "^1.7.4"
   },
   "devDependencies": {

@@ -27,6 +27,7 @@ export const fetchOneArticleBySlug = async (slug: string): Promise<Article> => {
     query: FetchOneArticleQuery,
     variables: { articleSlug: slug }
   });
+  console.log('datdatadatadatadatadataa', data)
   //todo notification manager
   return data.article;
 };

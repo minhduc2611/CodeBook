@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import SnackBarNotification from './../client/components/snack-bar/SnackBarNotification';
+import { Toaster } from 'react-hot-toast';
 
 const Utilities: FC = () => {
   return (
     <>
-      <SnackBarNotification />
+      <Toaster />
     </>
   );
 };

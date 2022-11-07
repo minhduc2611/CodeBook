@@ -18,6 +18,7 @@ export interface ArticleState {
     [key: string]: Cell;
   };
   originalArticle: Article | null;
+  isUnsavedChanges?: boolean;
 }
 
 // type UIArticle = ArrayToObjectByKey<Cell[], 'id'>;

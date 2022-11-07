@@ -33,7 +33,6 @@ export class ArticleResolver {
     } else if (articleSlug) {
       article = await this.articleService.getOne({ articleSlug });
     }
-    console.log('article', article);
     return article;
   }
 

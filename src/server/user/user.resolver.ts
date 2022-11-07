@@ -39,7 +39,6 @@ export class UserResolver {
 
   @Query(() => [User])
   async users() {
-    console.log('asdasdasdadsda');
     return this.userService.findAll();
   }
 

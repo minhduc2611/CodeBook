@@ -11,7 +11,7 @@ const nextConfig = removeImports({
   },
   webpack: function (config, { isServer }) {
     config.experiments = { asyncWebAssembly: true, syncWebAssembly: true };
-    // // fix error Buffer is not defined in storybook 
+    // // fix error Buffer is not defined in storybook
     // config.resolve = {
     //   extensions: ['.ts', '.js'],
     //   fallback: {
@@ -23,6 +23,8 @@ const nextConfig = removeImports({
     if (!isServer) {
       config.resolve.fallback.fs = false;
     }
+    config.mode = 'development';
+    config.hmr = false;
     return config;
   }
 });
