@@ -1,3 +1,4 @@
+import { ArticleState } from '../../types/entities/article';
 import { CellTypes } from '../../types/entities/cell';
 import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
@@ -61,6 +62,13 @@ export interface IUpdateArticleTitleAction {
   };
 }
 
+export interface IUpdateArticlePropAction {
+  type: CellActionType.UPDATE_ARTICLE_PROP;
+  payload: {
+    partial: Partial<ArticleState>;
+  };
+}
+
 export type ICellAction =
   | IMoveCellAction
   | IDeleteCellAction
@@ -69,4 +77,5 @@ export type ICellAction =
   | IUpdateCellAction
   | ISetCellsAction
   | IUpdateArticleAction
-  | IUpdateArticleTitleAction;
+  | IUpdateArticleTitleAction
+  | IUpdateArticlePropAction;

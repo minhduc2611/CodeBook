@@ -10,6 +10,7 @@ export const initialState: ArticleState = {
   id: '',
   title: '',
   slug: '',
+  category: '',
   cellOrder: [],
   article: {},
   originalArticle: null
@@ -18,6 +19,9 @@ export const initialState: ArticleState = {
 const reducer = produce(
   (state: ArticleState = initialState, action: ICellAction) => {
     switch (action.type) {
+      case CellActionType.UPDATE_ARTICLE_PROP:
+        const { partial } = action.payload;
+        return { ...state, ...partial };
       case CellActionType.UPDATE_ARTICLE_TITLE:
         const { text } = action.payload;
         return { ...state, title: text };

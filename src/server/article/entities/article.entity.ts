@@ -13,6 +13,16 @@ export class Article {
     this.cellOrder = [];
   }
 
+  static construct(): Article {
+    return {
+      _id: '',
+      article: [],
+      articleSlug: '',
+      articleTitle: '',
+      cellOrder: []
+    } as Article;
+  }
+
   @Field()
   @ObjectIdColumn()
   _id: string;
@@ -28,6 +38,10 @@ export class Article {
   @Field(() => [String!], { nullable: true })
   @Column()
   cellOrder: string[];
+
+  @Field(() => String!, { nullable: true })
+  @Column()
+  category: string;
 
   @Field(() => [CellObject], { nullable: 'items' })
   @Column()

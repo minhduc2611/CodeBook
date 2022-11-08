@@ -1,5 +1,6 @@
 // import CellList from '../../components/code-editor/cell-list';
 
+import { Typography, Chip } from '@mui/material';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import AddArticleButton from './../../client/page-components/codebooks/add-article-button';
@@ -20,7 +21,12 @@ const CodeBook = () => {
       {data &&
         data.map((a, idx) => (
           <p key={idx}>
-            <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
+            <Typography mt={2}>
+              <Link href={`/codebooks/${a.articleSlug}`}>{a.articleTitle}</Link>
+              {a.category && (
+                <Chip style={{ marginLeft: '10px' }} label={a.category} />
+              )}
+            </Typography>
           </p>
         ))}
       <AddArticleButton />

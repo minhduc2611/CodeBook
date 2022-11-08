@@ -10,10 +10,6 @@ export const fetchArticleList = () => {
     });
     try {
       const data = await fetchAllArticle();
-
-      // const names = data.objects.map((result: any) => {
-      //   return result.package.name;
-      // });
       dispatch({
         type: ArticleListActionType.FETCH_ARTICLE_LIST_SUCCESS,
         payload: data

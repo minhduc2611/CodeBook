@@ -27,11 +27,15 @@ const unsavedChanges = (article: ArticleState) => {
     article.title,
     article.originalArticle.articleTitle
   );
+  const equalType = deepEqual(
+    article.category,
+    article.originalArticle.category
+  );
   const equalArticle = deepEqual(
     Object.values(article.article),
     article.originalArticle.article
   );
-  const allAreEqual = equalCellOrder && equalTitle && equalArticle;
+  const allAreEqual = equalCellOrder && equalType && equalTitle && equalArticle;
   return !allAreEqual; // article changed = all are not equal
 };
 
@@ -60,6 +64,8 @@ const SaveArticleButton: FC = () => {
       if (article.id) {
         await updateArticle(article.id, saveOrAddArticle);
       } else {
+        console.log('saveOrAddArticle', saveOrAddArticle);
+        
         await addArticle(saveOrAddArticle);
       }
 
@@ -73,7 +79,6 @@ const SaveArticleButton: FC = () => {
   return (
     <div>
       <Button
-        href="/codebooks"
         disabled={!unsavedChanges(article)} // disabled when nothing changed
         onClick={handleSaveArticle}
       >

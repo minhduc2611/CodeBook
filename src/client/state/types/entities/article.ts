@@ -14,6 +14,7 @@ export interface ArticleState {
   id: string;
   slug: string;
   cellOrder: string[];
+  category: string;
   article: {
     [key: string]: Cell;
   };

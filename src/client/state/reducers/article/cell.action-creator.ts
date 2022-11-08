@@ -1,6 +1,8 @@
 import { CellTypes } from '../../types/entities/cell';
 import { Article } from './../../../../server/article/entities/article.entity';
 import { CellActionType } from './cell.action-types';
+
+import { ArticleState } from '../../types/entities/article';
 import {
   Direction,
   IDeleteCellAction,
@@ -9,6 +11,7 @@ import {
   IMoveCellAction,
   ISetCellsAction,
   IUpdateArticleAction,
+  IUpdateArticlePropAction,
   IUpdateArticleTitleAction,
   IUpdateCellAction
 } from './cell.actions';
@@ -89,6 +92,17 @@ export const updateArticleTitle = (text: string): IUpdateArticleTitleAction => {
     type: CellActionType.UPDATE_ARTICLE_TITLE,
     payload: {
       text
+    }
+  };
+};
+
+export const updateTitleProp = (
+  partial: Partial<ArticleState>
+): IUpdateArticlePropAction => {
+  return {
+    type: CellActionType.UPDATE_ARTICLE_PROP,
+    payload: {
+      partial
     }
   };
 };

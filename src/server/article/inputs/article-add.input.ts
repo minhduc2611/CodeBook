@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Column } from 'typeorm';
 import { CellInput } from '../entities/cell.entity';
 
 // @InputType()
@@ -14,6 +15,10 @@ export default class ArticleAddInput {
 
   @Field(() => [String])
   cellOrder: string[];
+
+  @Field(() => String)
+  @Column()
+  category: string;
 
   @Field(() => [CellInput])
   article: CellInput[];

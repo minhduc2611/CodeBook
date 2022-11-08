@@ -6,6 +6,7 @@ export const FetchAllArticleQuery = gql`
       cellOrder
       articleTitle
       articleSlug
+      category
       article {
         content
         id
@@ -25,6 +26,7 @@ export const FetchOneArticleQuery = gql`
       cellOrder
       articleSlug
       articleTitle
+      category
       article {
         content
         id
@@ -54,6 +56,7 @@ export const AddOneArticleMutation = gql`
     createArticle(input: $article) {
       _id
       cellOrder
+      category
       article {
         id
       }
