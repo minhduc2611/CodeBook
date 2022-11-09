@@ -50,6 +50,7 @@ export class ArticleService implements IBaseService {
     article.cellOrder = input.cellOrder;
     article.articleTitle = input.articleTitle;
     article.category = input.category;
+    article.progress = input.progress;
     article.articleSlug = createSlug(input.articleTitle);
     return this.articleRepository.save(article);
   }

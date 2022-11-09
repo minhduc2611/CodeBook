@@ -11,6 +11,7 @@ export const initialState: ArticleState = {
   title: '',
   slug: '',
   category: '',
+  progress: '',
   cellOrder: [],
   article: {},
   originalArticle: null

@@ -7,6 +7,7 @@ export const FetchAllArticleQuery = gql`
       articleTitle
       articleSlug
       category
+      progress
       article {
         content
         id
@@ -27,6 +28,7 @@ export const FetchOneArticleQuery = gql`
       articleSlug
       articleTitle
       category
+      progress
       article {
         content
         id
@@ -57,6 +59,7 @@ export const AddOneArticleMutation = gql`
       _id
       cellOrder
       category
+      progress
       article {
         id
       }

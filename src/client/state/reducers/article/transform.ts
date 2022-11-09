@@ -19,6 +19,7 @@ export function transform<A extends Article, AS extends ArticleState>(
   state.title = article.articleTitle;
   state.slug = article.articleSlug;
   state.category = article.category;
+  state.progress = article.progress;
   state.article = arrayToObject<Cell>(article.article, 'id');
   state.originalArticle = article;
   return state;
@@ -34,6 +35,7 @@ export function transformStateToEntity<
   );
   article.cellOrder = articleState.cellOrder;
   article.category = articleState.category;
+  article.progress = articleState.progress;
   article.articleTitle = articleState.title;
   // article._id = articleState.id;
   // article.articleSlug = articleState.slug;

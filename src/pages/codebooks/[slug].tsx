@@ -3,6 +3,7 @@ import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 import { fetchOneArticleBySlug } from 'src/client/graphql/queries-creator/articles';
+import ArticleProgressInput from 'src/client/page-components/codebooks/article-progress-input';
 import ArticleCategoryInput from '../../client/page-components/codebooks/article-category-input';
 import CellProvider from '../../client/state/hooks/useCellContext';
 import ArticleTitleInput from './../../client/page-components/codebooks/article-title-input';
@@ -52,6 +53,7 @@ const CodeBookDetail: FC = () => {
         <Stack direction="row" spacing={2}>
           <ArticleTitleInput />
           <ArticleCategoryInput />
+          <ArticleProgressInput />
         </Stack>
         <CellList />
         <DeleteArticleButton />

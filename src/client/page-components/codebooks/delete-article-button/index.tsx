@@ -1,8 +1,9 @@
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { FC } from 'react';
 import { deleteArticle } from '../../../../client/graphql/queries-creator/articles';
 
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DeleteArticleButton: FC = () => {
   const {
@@ -11,7 +12,11 @@ const DeleteArticleButton: FC = () => {
 
   return (
     <div>
-      <Button
+            <IconButton
+        style={{ position: 'fixed', right: '70px', bottom: '10px' }}
+        color="secondary"
+        aria-label="delete"
+        size="large"
         href="/codebooks"
         onClick={(event) => {
           if (!confirm('delete this article')) {
@@ -21,8 +26,8 @@ const DeleteArticleButton: FC = () => {
           }
         }}
       >
-        Delete Article
-      </Button>
+        <DeleteIcon fontSize="large" />
+      </IconButton>
     </div>
   );
 };

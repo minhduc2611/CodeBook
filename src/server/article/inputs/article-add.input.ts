@@ -20,6 +20,10 @@ export default class ArticleAddInput {
   @Column()
   category: string;
 
+  @Field(() => String)
+  @Column()
+  progress: string;
+
   @Field(() => [CellInput])
   article: CellInput[];
 }

@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import deepEqual from 'deep-equal';
 import { FC } from 'react';
 import toast from 'react-hot-toast';
@@ -14,7 +14,7 @@ import { useService } from '../../../../client/hooks';
 import { useCellContext } from '../../../../client/state/hooks/useCellContext';
 import { ArticleState } from '../../../../client/state/types/entities/article';
 import { UnsavedChanges } from './UnsavedChanges';
-
+import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 const unsavedChanges = (article: ArticleState) => {
   if (!article || !article.originalArticle) {
     return false;
@@ -27,15 +27,24 @@ const unsavedChanges = (article: ArticleState) => {
     article.title,
     article.originalArticle.articleTitle
   );
-  const equalType = deepEqual(
+  const equalCategory = deepEqual(
     article.category,
     article.originalArticle.category
+  );
+  const equalProgress = deepEqual(
+    article.progress,
+    article.originalArticle.progress
   );
   const equalArticle = deepEqual(
     Object.values(article.article),
     article.originalArticle.article
   );
-  const allAreEqual = equalCellOrder && equalType && equalTitle && equalArticle;
+  const allAreEqual =
+    equalCellOrder &&
+    equalCategory &&
+    equalProgress &&
+    equalTitle &&
+    equalArticle;
   return !allAreEqual; // article changed = all are not equal
 };
 
@@ -48,7 +57,7 @@ const SaveArticleButton: FC = () => {
   const router = useRouter();
 
   const unsavedChangesService = useService(
-    new UnsavedChanges('AAAAAAAAAAAAAAAAAA', router)
+    new UnsavedChanges('Changes aren\'t saved, do you want to leave?', router)
   );
   // console.log('unsavedChanges', unsavedChanges(article));
   // // useUnsavedChanges(() => unsavedChanges(article));
@@ -65,7 +74,7 @@ const SaveArticleButton: FC = () => {
         await updateArticle(article.id, saveOrAddArticle);
       } else {
         console.log('saveOrAddArticle', saveOrAddArticle);
-        
+
         await addArticle(saveOrAddArticle);
       }
 
@@ -78,12 +87,16 @@ const SaveArticleButton: FC = () => {
   };
   return (
     <div>
-      <Button
+      <IconButton
+        style={{ position: 'fixed', right: '140px', bottom: '10px' }}
+        color="info"
+        aria-label="save"
+        size="large"
         disabled={!unsavedChanges(article)} // disabled when nothing changed
         onClick={handleSaveArticle}
       >
-        Save Article
-      </Button>
+        <SaveRoundedIcon fontSize="large" />
+      </IconButton>
     </div>
   );
 };
